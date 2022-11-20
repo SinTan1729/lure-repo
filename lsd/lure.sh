@@ -14,11 +14,11 @@ sources=()
 checksums=()
 
 version() {
-    printf "$(curl --silent "https://api.github.com/repos/${git_repo}/releases/latest" | grep -Eo '"tag_name": "v(.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
+    printf "$(curl --silent "https://api.github.com/repos/${git_repo}/releases/latest" | grep -Eo '"tag_name": "(.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
 }
 
 package() {
-	vers="$(curl --silent "https://api.github.com/repos/${git_repo}/releases/latest" | grep -Eo '"tag_name": "v(.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
+	vers="$(curl --silent "https://api.github.com/repos/${git_repo}/releases/latest" | grep -Eo '"tag_name": "(.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
 	echo Installing ${name} ${vers}
 	curl -L "https://github.com/${git_repo}/releases/download/${vers}/${name}-${vers}-x86_64-unknown-linux-musl.tar.gz" -o ${name}.tar.gz
 	tar xzvf "${name}.tar.gz" -C .

@@ -7,24 +7,25 @@ architectures=('amd64')
 maintainer='SinTan1729'
 license=('APACHE-2.0' 'MIT')
 provides=('bat')
-conflicts=('bat')
+conflicts=('$bat')
+git_repo="sharkdp/bat"
 
 sources=()
 checksums=()
 
 version() {
-    printf "$(curl --silent "https://api.github.com/repos/sharkdp/bat/releases/latest" | grep -Eo '"tag_name": "v(.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
+    printf "$(curl --silent "https://api.github.com/repos/${git_repo}/releases/latest" | grep -Eo '"tag_name": "v(.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
 }
 
 package() {
-	echo Installing bat $version
-	curl -L "https://github.com/sharkdp/bat/releases/download/$version/bat-$version-x86_64-unknown-linux-musl.tar.gz" -o bat.tar.gz
-	tar xzvf "bat.tar.gz" -C .
-	cd "./bat-$version-x86_64-unknown-linux-musl"
-	install -Dm755 "./bat" "${pkgdir}/usr/local/bin/bat"
-	install -Dm644 "./bat.1" "${pkgdir}/usr/local/share/man/man1/bat.1"
-	install -Dm644 "./autocomplete/bat.fish" "${pkgdir}/usr/share/fish/completions/bat.fish"
-	install -Dm644 "./autocomplete/bat.zsh" "${pkgdir}/usr/share/zsh/site-functions/_bat"
-	install -Dm644 "./autocomplete/bat.bash" "${pkgdir}/usr/share/bash-completion/completions/bat"
+	echo Installing ${name} ${version}
+	curl -L "https://github.com/${git_repo}/releases/download/${version}/${name}-${version}-x86_64-unknown-linux-musl.tar.gz" -o ${name}.tar.gz
+	tar xzvf "${name}.tar.gz" -C .
+	cd "./${name}-${version}-x86_64-unknown-linux-musl"
+	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
+	install -Dm644 "./${name}.1" "${pkgdir}/usr/local/share/man/man1/${name}.1"
+	install -Dm644 "./autocomplete/${name}.fish" "${pkgdir}/usr/share/fish/completions/${name}.fish"
+	install -Dm644 "./autocomplete/${name}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${name}"
+	install -Dm644 "./autocomplete/${name}.bash" "${pkgdir}/usr/share/bash-completion/completions/${name}"
 }
  

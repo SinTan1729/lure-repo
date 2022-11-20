@@ -8,7 +8,7 @@ maintainer='SinTan1729'
 license=('APACHE-2.0' 'MIT')
 provides=('bat')
 conflicts=('bat')
-git_repo="sharkdp/bat"
+git_repo='sharkdp/bat'
 
 sources=()
 checksums=()

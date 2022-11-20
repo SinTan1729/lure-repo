@@ -8,7 +8,7 @@ maintainer='SinTan1729'
 license=('APACHE-2.0')
 provides=('lsd')
 conflicts=('lsd')
-git_repo="Peltoche/lsd"
+git_repo='Peltoche/lsd'
 
 sources=()
 checksums=()

@@ -8,7 +8,7 @@ maintainer='SinTan1729'
 license=('MIT')
 provides=('lf')
 conflicts=('lf')
-git_repo="gokcehan/lf"
+git_repo='gokcehan/lf'
 
 sources=()
 checksums=()

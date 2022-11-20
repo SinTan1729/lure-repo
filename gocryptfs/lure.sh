@@ -8,7 +8,7 @@ maintainer='SinTan1729'
 license=('MIT')
 provides=('gocryptfs' 'gocryptfs-xray')
 conflicts=('gocryptfs' 'gocryptfs-xray')
-git_repo="rfjakob/gocryptfs"
+git_repo='rfjakob/gocryptfs'
 
 sources=()
 checksums=()

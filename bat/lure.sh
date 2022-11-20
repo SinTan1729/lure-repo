@@ -16,7 +16,8 @@ version() {
 }
 
 package() {
-	curl -sL "https://github.com/sharkdp/bat/releases/download/$version/bat-$version-x86_64-unknown-linux-musl.tar.gz" -o bat.tar.gz
+	echo Installing bat $version
+	curl -L "https://github.com/sharkdp/bat/releases/download/$version/bat-$version-x86_64-unknown-linux-musl.tar.gz" -o bat.tar.gz
 	tar xzvf "bat.tar.gz" -C .
 	cd "./bat-$version-x86_64-unknown-linux-musl"
 	install -Dm755 "./bat" "${pkgdir}/usr/local/bin/bat"

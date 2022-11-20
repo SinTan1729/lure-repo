@@ -1,5 +1,5 @@
 name='bat'
-version=auto
+version=VERSION
 release=1
 desc='A cat(1) clone with syntax highlighting and Git integration'
 homepage='https://github.com/sharkdp/bat'

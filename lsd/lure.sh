@@ -1,5 +1,5 @@
 name='lsd'
-version=auto
+version=VERSION
 release=1
 desc='The next gen ls command'
 homepage='https://github.com/Peltoche/lsd'

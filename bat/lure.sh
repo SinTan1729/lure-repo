@@ -4,6 +4,7 @@ release=1
 desc='A cat(1) clone with syntax highlighting and Git integration'
 homepage='https://github.com/sharkdp/bat'
 architectures=('amd64')
+maintainer='SinTan1729'
 license=('APACHE-2.0' 'MIT')
 provides=('bat')
 conflicts=('bat')

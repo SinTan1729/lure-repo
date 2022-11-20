@@ -1,5 +1,5 @@
 name='bat'
-version=v0.22.1
+version=auto
 release=1
 desc='A cat(1) clone with syntax highlighting and Git integration'
 homepage='https://github.com/sharkdp/bat'
@@ -18,10 +18,11 @@ version() {
 }
 
 package() {
-	echo Installing ${name} ${version}
-	curl -L "https://github.com/${git_repo}/releases/download/${version}/${name}-${version}-x86_64-unknown-linux-musl.tar.gz" -o ${name}.tar.gz
+	vers="$(curl --silent "https://api.github.com/repos/${git_repo}/releases/latest" | grep -Eo '"tag_name": "v(.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
+	echo Installing ${name} ${vers}
+	curl -L "https://github.com/${git_repo}/releases/download/${vers}/${name}-${vers}-x86_64-unknown-linux-musl.tar.gz" -o ${name}.tar.gz
 	tar xzvf "${name}.tar.gz" -C .
-	cd "./${name}-${version}-x86_64-unknown-linux-musl"
+	cd "./${name}-${vers}-x86_64-unknown-linux-musl"
 	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
 	install -Dm644 "./${name}.1" "${pkgdir}/usr/local/share/man/man1/${name}.1"
 	install -Dm644 "./autocomplete/${name}.fish" "${pkgdir}/usr/share/fish/completions/${name}.fish"

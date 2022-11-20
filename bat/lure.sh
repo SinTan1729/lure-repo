@@ -1,9 +1,9 @@
 name='bat'
-version=auto
+version=v0.22.1
 release=1
 desc='A cat(1) clone with syntax highlighting and Git integration'
 homepage='https://github.com/sharkdp/bat'
-architectures=('all')
+architectures=('amd64')
 license=('APACHE-2.0' 'MIT')
 provides=('bat')
 conflicts=('bat')

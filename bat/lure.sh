@@ -25,8 +25,8 @@ package() {
 	cd "./${name}-${vers}-x86_64-unknown-linux-musl"
 	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
 	install -Dm644 "./${name}.1" "${pkgdir}/usr/local/share/man/man1/${name}.1"
-	install -Dm644 "./autocomplete/${name}.fish" "${pkgdir}/usr/share/fish/completions/${name}.fish"
-	install -Dm644 "./autocomplete/${name}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${name}"
-	install -Dm644 "./autocomplete/${name}.bash" "${pkgdir}/usr/share/bash-completion/completions/${name}"
+	command -v fish &> /dev/null && install -Dm644 "./autocomplete/${name}.fish" "${pkgdir}/usr/share/fish/completions/${name}.fish"
+	command -v zsh &> /dev/null && install -Dm644 "./autocomplete/${name}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${name}"
+	command -v bash &> /dev/null && install -Dm644 "./autocomplete/${name}.bash" "${pkgdir}/usr/share/bash-completion/completions/${name}"
 }
  

@@ -6,8 +6,8 @@ homepage='https://github.com/rfjakob/gocryptfs/'
 architectures=('amd64')
 maintainer='SinTan1729'
 license=('MIT')
-provides=('gocryptfs', 'gocryptfs-xray')
-conflicts=('gocryptfs', 'gocryptfs-xray')
+provides=('gocryptfs' 'gocryptfs-xray')
+conflicts=('gocryptfs' 'gocryptfs-xray')
 git_repo="rfjakob/gocryptfs"
 
 sources=()
@@ -20,7 +20,7 @@ version() {
 package() {
 	vers="$(curl --silent "https://api.github.com/repos/${git_repo}/releases/latest" | grep -Eo '"tag_name": "v(.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
 	echo Installing ${name} ${vers}
-	curl -L "https://github.com/${git_repo}/releases/download/${vers}/${name}_${vers}_linux-static_${architectures}.tar.gz" -o ${name}.tar.gz
+	curl -L "https://github.com/${git_repo}/releases/download/${vers}/${name}_${vers}_linux-static_${ARCH}.tar.gz" -o ${name}.tar.gz
 	tar xzf "${name}.tar.gz" -C .
 	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
 	install -Dm755 "./${name}-xray" "${pkgdir}/usr/local/bin/${name}-xray"

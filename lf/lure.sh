@@ -20,7 +20,7 @@ version() {
 package() {
 	vers="$(curl --silent "https://api.github.com/repos/${git_repo}/releases/latest" | grep -Eo '"tag_name": "(r.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
 	echo Installing ${name} ${vers}
-	curl -L "https://github.com/${git_repo}/releases/download/${vers}/${name}-linux-${architecture}.tar.gz" -o ${name}.tar.gz
+	curl -L "https://github.com/${git_repo}/releases/download/${vers}/${name}-linux-${architectures}.tar.gz" -o ${name}.tar.gz
 	tar xzf "${name}.tar.gz" -C .
 	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
 }

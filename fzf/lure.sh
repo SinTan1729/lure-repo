@@ -45,5 +45,8 @@ package() {
 	command -v fish &> /dev/null && install -Dm644 key-bindings.fish "${pkgdir}/usr/share/fish/vendor_functions.d/${name}_key_bindings.fish"
 	command -v bash &> /dev/null && install -Dm644 key-bindings.bash "${pkgdir}/usr/share/${name}/key-bindings.bash"
 	command -v zsh &> /dev/null && install -Dm644 key-bindings.zsh "${pkgdir}/usr/share/${name}/key-bindings.zsh"
+	# Notice
+	echo For key-binding and completion to work with fish, some manual intervention is required
+	echo Look here for instructions: https://wiki.archlinux.org/title/fzf#fish
 }
  

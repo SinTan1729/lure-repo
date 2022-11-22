@@ -20,7 +20,7 @@ version() {
 package() {
 	# Pull sources
 	echo Pulling ${name} ${version}
-	curl -L "https://github.com/${git_repo}/releases/download/${version}/${name}_${version}_linux-static_${ARCH}.tar.gz" -o ${name}.tar.gz
+	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}_${version}_linux-static_${ARCH}.tar.gz" -o ${name}.tar.gz
 	# Build package
 	echo Creating the package
 	tar -xzf "${name}.tar.gz" -C .

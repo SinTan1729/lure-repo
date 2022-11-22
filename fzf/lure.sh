@@ -20,7 +20,7 @@ version() {
 package() {
 	# Pull sources
 	echo Pulling ${name} ${version}
-	curl -L "https://github.com/${git_repo}/releases/download/${version}/fzf-${version}-linux_amd64.tar.gz" -o ${name}.tar.gz
+	curl -L "https://github.com/${git_repo}/releases/latest/download/fzf-${version}-linux_amd64.tar.gz" -o ${name}.tar.gz
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/bin/${name}-tmux" -o ${name}-tmux
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/man/man1/${name}.1" -o ${name}.1
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/man/man1/${name}-tmux.1" -o ${name}-tmux.1

@@ -14,7 +14,7 @@ sources=()
 checksums=()
 
 version() {
-    printf "$(curl --silent "https://api.github.com/repos/${git_repo}/releases/latest" | grep -Eo '"tag_name": "(.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
+    printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
 }
 
 package() {

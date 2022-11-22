@@ -20,15 +20,15 @@ version() {
 
 package() {
 	# Pull sources
-	echo Pulling ${name} ${version}
+	echo "Pulling ${name} ${version}"
 	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}.tar.xz" -o ${name}.tar.xz
 	# Build package
-	echo Creating the package
+	echo "Creating the package"
 	tar -xf ${name}.tar.xz ${name}/dist
 	# Binary
 	mkdir -p "${pkgdir}/usr/share/cockpit"
 	mv ${name}/dist "${pkgdir}/usr/share/cockpit/sensors"
 	# Notice
-	echo Make sure to run sensors-detect
+	echo "Make sure to run sensors-detect"
 }
  

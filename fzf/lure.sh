@@ -19,7 +19,7 @@ version() {
 
 package() {
 	# Pull sources
-	echo Pulling ${name} ${version}
+	echo "Pulling ${name} ${version}"
 	curl -L "https://github.com/${git_repo}/releases/latest/download/fzf-${version}-linux_amd64.tar.gz" -o ${name}.tar.gz
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/bin/${name}-tmux" -o ${name}-tmux
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/man/man1/${name}.1" -o ${name}.1
@@ -30,7 +30,7 @@ package() {
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/shell/key-bindings.zsh" -o key-bindings.bash
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/shell/key-bindings.fish" -o key-bindings.fish
 	# Build package
-	echo Creating the package
+	echo "Creating the package"
 	tar -xzf "${name}.tar.gz" -C .
 	# Binaries
 	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
@@ -46,7 +46,7 @@ package() {
 	command -v bash &> /dev/null && install -Dm644 key-bindings.bash "${pkgdir}/usr/share/${name}/key-bindings.bash"
 	command -v zsh &> /dev/null && install -Dm644 key-bindings.zsh "${pkgdir}/usr/share/${name}/key-bindings.zsh"
 	# Notice
-	echo For key-binding and completion to work with fish, some manual intervention is required
-	echo Look here for instructions: https://wiki.archlinux.org/title/fzf#fish
+	echo "For key-binding and completion to work with fish, some manual intervention is required"
+	echo "Look here for instructions: https://wiki.archlinux.org/title/fzf#fish"
 }
  

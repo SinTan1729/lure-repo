@@ -17,7 +17,7 @@ checksums=('a2380aff1904103317a92b61a2008e2018184de0a7ed58e2516bd1b3818a48bf')
 
 package() {
 	# Build package
-	echo Creating the package
+	echo "Creating the package"
 	unzip -qq ${name}-${version}-bin.zip
 	# Binary
 	mkdir -p ${pkgdir}/opt

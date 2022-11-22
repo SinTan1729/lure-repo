@@ -18,16 +18,21 @@ version() {
 }
 
 package() {
-	vers="$(curl --silent "https://api.github.com/repos/${git_repo}/releases/latest" | grep -Eo '"tag_name": "(r.*)"' | sed -E 's/.*"([^"]+)".*/\1/')"
-	echo Installing ${name} ${vers}
-	curl -L "https://github.com/${git_repo}/releases/download/${vers}/${name}-linux-${ARCH}.tar.gz" -o ${name}.tar.gz
+	# Pull sources
+	echo Pulling ${name} ${version}
+	curl -L "https://github.com/${git_repo}/releases/download/${version}/${name}-linux-${ARCH}.tar.gz" -o ${name}.tar.gz
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/${name}.1" -o ${name}.1
 	command -v fish &> /dev/null && curl -L "https://raw.githubusercontent.com/${git_repo}/master/etc/${name}.fish" -o ${name}.fish
 	command -v zsh &> /dev/null && curl -L "https://raw.githubusercontent.com/${git_repo}/master/etc/${name}.zsh" -o ${name}.zsh
 	command -v bash &> /dev/null && curl -L "https://raw.githubusercontent.com/${git_repo}/master/etc/${name}.bash" -o ${name}.bash
-	tar xzf "${name}.tar.gz" -C .
+	# Build package
+	echo Creating the package
+	tar -xzf "${name}.tar.gz" -C .
+	# Binary
 	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
+	# Manpage
 	install -Dm644 "./${name}.1" "${pkgdir}/usr/local/share/man/man1/${name}.1"
+	# Autocomplete
 	command -v fish &> /dev/null && install -Dm644 "./${name}.fish" "${pkgdir}/usr/share/fish/completions/${name}.fish"
 	command -v zsh &> /dev/null && install -Dm644 "./${name}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${name}"
 	command -v bash &> /dev/null && install -Dm644 "./${name}.bash" "${pkgdir}/usr/share/bash-completion/completions/${name}"

@@ -1,6 +1,6 @@
 # Maintainer: Sintan Santorum <c1scu0hh at anonaddy dot me>
 name="movie_rename"
-version=1.1.1
+version=1.1.2
 release=1
 desc="A simple tool to reame movies, written in Rust."
 architectures=('amd64')

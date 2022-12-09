@@ -2,7 +2,7 @@
 name="movie_rename"
 version=1.1.2
 release=1
-desc="A simple tool to reame movies, written in Rust."
+desc="A simple tool to rename movies, written in Rust."
 architectures=('amd64')
 homepage='https://github.com/SinTan1729/movie_rename'
 license=('GPL3')

@@ -1,13 +1,12 @@
 name='sejda-console'
 version=3.2.85
-release=1
+release=2
 desc='Shell interface for performing pdf manipulations'
 homepage='https://www.sejda.org'
 architectures=('all')
 maintainer='SinTan1729'
 license=('AGPL3')
-provides=()
-conflicts=()
+provides=('sejda-console')
 deps=('jre-openjdk-headless>=1.8')
 deps_opensuse=('java-17-openjdk-headless')
 git_repo='torakiki/sejda'

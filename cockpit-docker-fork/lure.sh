@@ -1,4 +1,5 @@
-name='cockpit-docker'
+name='cockpit-docker-fork'
+_name='cockpit-docker'
 version=VERSION
 release=1
 desc='Manage your docker containers from Cockpit'
@@ -8,7 +9,7 @@ maintainer='SinTan1729'
 license=('LGPL-2.1')
 provides=()
 conflicts=()
-deps=('cockpit')
+deps=()
 git_repo='mrevjd/cockpit-docker'
 
 sources=()
@@ -21,7 +22,7 @@ version() {
 package() {
 	# Pull sources
 	echo "Pulling ${name} ${version}"
-	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}.tar.gz" -o ${name}.tar.gz
+	curl -L "https://github.com/${git_repo}/releases/latest/download/${_name}.tar.gz" -o ${name}.tar.gz
 	# Build package
 	echo "Creating the package"
 	tar -xf ${name}.tar.gz -C .

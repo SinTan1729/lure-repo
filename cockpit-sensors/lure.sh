@@ -8,7 +8,7 @@ maintainer='SinTan1729'
 license=('LGPL-2.1')
 provides=()
 conflicts=()
-deps=('lm_sensors')
+deps=('lm_sensors' 'cockpit')
 git_repo='ocristopfer/cockpit-sensors'
 
 sources=()

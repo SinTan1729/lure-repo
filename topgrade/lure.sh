@@ -1,6 +1,6 @@
 name="topgrade"
 version=10.3.1
-release=1
+release=2
 desc="Invoke the upgrade procedure of multiple package managers"
 architectures=('amd64' 'aarch64' 'armv7')
 maintainer='SinTan1729'
@@ -15,8 +15,11 @@ checksums_amd64=('c561de3c965e618b9af72ffcba9cecdaaf76027b0e88954fa8328267d433b6
 checksums_aarch64=('b3ef6a99fdd4777f440402b2d708276b03f7ade80b61a0d73a7039b6896d62c7')
 checksums_armv7=('9702515aa7ea31d33f2c1b2a2d1f766adab8a6915f2ac499076528305a381c5d')
 package() {
-	# binary
-	install -Dm755 ./topgrade "$pkgdir/usr/local/bin/topgrade"
+# disable self-update as it won't work
+	echo '#!/bin/sh'$'\n\n''TOPGRADE_NO_SELF_UPGRADE=true /opt/topgrade/topgrade' > topgrade-sh
+	# install binary
+	install -Dm755 ./topgrade "$pkgdir/opt/topgrade/topgrade"
+	install -Dm755 ./topgrade-sh "$pkgdir/usr/local/bin/topgrade"
 	# manpage
 	./topgrade --gen-manpage | sed 's/.TH Topgrade 1/.TH Topgrade 8/' > topgrade.8
 	install -Dm644 ./topgrade.8 "$pkgdir/usr/local/share/man/man8/topgrade.8"

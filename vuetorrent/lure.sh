@@ -1,6 +1,6 @@
 name='vuetorrent'
 version=VERSION
-release=1
+release=2
 desc='The sleekest looking WEBUI for qBittorrent made with Vuejs!'
 homepage='https://github.com/WDaan/VueTorrent'
 architectures=('amd64')
@@ -22,7 +22,7 @@ package() {
 	echo "Pulling ${name} ${version}"
 	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}.zip" -o ${name}.zip
 	# Unzip and install
-	unzip /tmp/vuetorrent.zip -d "${pkgdir}/opt/${name}"
+	unzip vuetorrent.zip -d "${pkgdir}/opt/${name}"
 	# Print usage instructions
 	echo "Make sure to choose /opt/vuetorrent as the location of the custom WebUI in  qBittorrent settings."
 	echo "You might nedd to mount this directory first if you're using docker."

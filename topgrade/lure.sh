@@ -1,6 +1,6 @@
 name="topgrade"
-version=10.3.1
-release=2
+version=10.3.2
+release=1
 desc="Invoke the upgrade procedure of multiple package managers"
 architectures=('amd64' 'aarch64' 'armv7')
 maintainer='SinTan1729'
@@ -11,9 +11,9 @@ conflicts=('topgrade')
 sources_amd64=("${homepage}/releases/download/v${version}/${name}-v${version}-x86_64-unknown-linux-musl.tar.gz")
 sources_aarch64=("${homepage}/releases/download/v${version}/${name}-v${version}-aarch64-unknown-linux-musl.tar.gz")
 sources_armv7=("${homepage}/releases/download/v${version}/${name}-v${version}-armv7-unknown-linux-gnueabihf.tar.gz")
-checksums_amd64=('c561de3c965e618b9af72ffcba9cecdaaf76027b0e88954fa8328267d433b6a0')
-checksums_aarch64=('b3ef6a99fdd4777f440402b2d708276b03f7ade80b61a0d73a7039b6896d62c7')
-checksums_armv7=('9702515aa7ea31d33f2c1b2a2d1f766adab8a6915f2ac499076528305a381c5d')
+checksums_amd64=('9d42fafe04a7c2130f6befe4c8024d1e9496e985532c47dcd930da37afb03aca')
+checksums_aarch64=('78b4ca2fcf3c1612cc2065e0ea6c0e74c872d1fab03cd4a1e134f09b8110bbb6')
+checksums_armv7=('93879dfd9ca921aef20e51f138ffe1c88d398fc8391bf44da2f733a941a58a2f')
 package() {
 	# disable self-update as it won't work
 	echo '#!/bin/sh'$'\n\n''TOPGRADE_NO_SELF_UPGRADE=true /opt/topgrade/topgrade' > topgrade-sh

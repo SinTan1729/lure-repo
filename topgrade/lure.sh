@@ -1,6 +1,6 @@
 name="topgrade"
 version=10.3.2
-release=1
+release=2
 desc="Invoke the upgrade procedure of multiple package managers"
 architectures=('amd64' 'aarch64' 'armv7')
 maintainer='SinTan1729'
@@ -16,7 +16,7 @@ checksums_aarch64=('78b4ca2fcf3c1612cc2065e0ea6c0e74c872d1fab03cd4a1e134f09b8110
 checksums_armv7=('93879dfd9ca921aef20e51f138ffe1c88d398fc8391bf44da2f733a941a58a2f')
 package() {
 	# disable self-update as it won't work
-	echo '#!/bin/sh'$'\n\n''TOPGRADE_NO_SELF_UPGRADE=true /opt/topgrade/topgrade' > topgrade-sh
+	echo '#!/bin/sh'$'\n\n''TOPGRADE_NO_SELF_UPGRADE=true /opt/topgrade/topgrade "$@"' > topgrade-sh
 	# install binary
 	install -Dm755 ./topgrade "$pkgdir/opt/topgrade/topgrade"
 	install -Dm755 ./topgrade-sh "$pkgdir/usr/local/bin/topgrade"

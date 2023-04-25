@@ -26,5 +26,5 @@ package() {
 	unzip -qq vuetorrent.zip -d "${pkgdir}/opt"
 	# Print usage instructions
 	echo "Make sure to choose /opt/vuetorrent as the location of the custom WebUI in  qBittorrent settings."
-	echo "You might nedd to mount this directory first if you're using docker."
+	echo "You might need to mount this directory first if you're using docker."
 }

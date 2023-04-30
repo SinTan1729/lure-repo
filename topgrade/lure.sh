@@ -1,6 +1,6 @@
 name="topgrade"
-version=10.3.3
-release=3
+version=11.0.0
+release=1
 desc="Invoke the upgrade procedure of multiple package managers"
 architectures=('amd64' 'aarch64' 'armv7')
 maintainer='SinTan1729'
@@ -11,15 +11,12 @@ conflicts=('topgrade')
 sources_amd64=("${homepage}/releases/download/v${version}/${name}-v${version}-x86_64-unknown-linux-musl.tar.gz")
 sources_aarch64=("${homepage}/releases/download/v${version}/${name}-v${version}-aarch64-unknown-linux-musl.tar.gz")
 sources_armv7=("${homepage}/releases/download/v${version}/${name}-v${version}-armv7-unknown-linux-gnueabihf.tar.gz")
-checksums_amd64=('09844a967ea34e90a4c8d95a27cb70af09bc79d6148cf288790bed096b1b00e7')
-checksums_aarch64=('59a0dca3754162212138cead0a7e422f1c5c71a0f7699b4853d32bcadf43e900')
-checksums_armv7=('fc2af1b177560382f7f6504fabce19a024393b26c0e90fb89751f96be161b96e')
+checksums_amd64=('7d81ddbbba2bb5968959ff2fef20714d0fdea47188119978687b6ada5e7898bb')
+checksums_aarch64=('30b7ccf9e1bf52fccc97062dece32df28b7c6f70511f9f156ce28a3d9ea2db54')
+checksums_armv7=('d1d4eb6287d9a833a9ae35882b4ae997f52be1b114456286088ff928d620f258')
 package() {
-	# disable self-update as it won't work
-	echo '#!/bin/sh'$'\n\n''TOPGRADE_NO_SELF_UPGRADE=true /opt/topgrade/topgrade "$@"' >topgrade-sh
 	# install binary
-	install -Dm755 ./topgrade "$pkgdir/opt/topgrade/topgrade"
-	install -Dm755 ./topgrade-sh "$pkgdir/usr/local/bin/topgrade"
+	install -Dm755 ./topgrade "$pkgdir/usr/local/bin/topgrade"
 	# manpage
 	./topgrade --gen-manpage | sed 's/.TH Topgrade 1/.TH Topgrade 8/' >topgrade.8
 	install -Dm644 ./topgrade.8 "$pkgdir/usr/local/share/man/man8/topgrade.8"
@@ -36,4 +33,5 @@ package() {
 		./topgrade --gen-completion zsh >topgrade.zsh
 		install -Dm644 ./topgrade.zsh "${pkgdir}/usr/share/zsh/site-functions/_topgrade"
 	fi
+	echo "Please add 'no_self_update = true' to your 'topgrade.toml' file to disable self updates, as it won't work with this installation"
 }

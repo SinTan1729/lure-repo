@@ -1,6 +1,6 @@
 name="topgrade"
 version=12.0.2
-release=1
+release=2
 desc="Invoke the upgrade procedure of multiple package managers"
 architectures=('amd64' 'aarch64' 'armv7')
 maintainer='SinTan1729'
@@ -16,10 +16,10 @@ checksums_aarch64=('683805723bcce9c0a7cc1ecf06edf49a6becaf24ea59a0e6d1bfc697b54a
 checksums_armv7=('5f4ceb90fe374d1c03bef0b9b3cdc995c5ea5e7d0cb5feb5c893a6cd50c13623')
 package() {
 	# install binary
-	install -Dm755 ./topgrade "$pkgdir/usr/local/bin/topgrade"
+	install -Dm755 ./topgrade "$pkgdir/usr/bin/topgrade"
 	# manpage
 	./topgrade --gen-manpage | sed 's/.TH Topgrade 1/.TH Topgrade 8/' >topgrade.8
-	install -Dm644 ./topgrade.8 "$pkgdir/usr/local/share/man/man8/topgrade.8"
+	install -Dm644 ./topgrade.8 "$pkgdir/usr/share/man/man8/topgrade.8"
 	# completions
 	if $(command -v fish &>/dev/null) && [ $(echo $(fish --version | awk '{print $3}')$'\n'3.4.0 | sort -V | head -n1) != '3.4.0' ]; then
 		./topgrade --gen-completion fish >topgrade.fish

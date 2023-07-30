@@ -1,6 +1,6 @@
 name='fzf'
 version=VERSION
-release=1
+release=2
 desc='A command-line fuzzy finder'
 homepage='https://github.com/junegunn/fzf'
 architectures=('amd64' 'arm')
@@ -33,11 +33,11 @@ package() {
 	echo "Creating the package"
 	tar -xzf "${name}.tar.gz" -C .
 	# Binaries
-	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
-	install -Dm755 "./${name}-tmux" "${pkgdir}/usr/local/bin/${name}-tmux"
+	install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
+	install -Dm755 "./${name}-tmux" "${pkgdir}/usr/bin/${name}-tmux"
 	# Manpages
-	install -Dm644 "./${name}.1" "${pkgdir}/usr/local/share/man/man1/${name}.1"
-	install -Dm644 "./${name}-tmux.1" "${pkgdir}/usr/local/share/man/man1/${name}-tmux.1"
+	install -Dm644 "./${name}.1" "${pkgdir}/usr/share/man/man1/${name}.1"
+	install -Dm644 "./${name}-tmux.1" "${pkgdir}/usr/share/man/man1/${name}-tmux.1"
 	# Autocomplete
 	command -v zsh &>/dev/null && install -Dm644 "./${name}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${name}"
 	command -v bash &>/dev/null && install -Dm644 "./${name}.bash" "${pkgdir}/usr/share/bash-completion/completions/${name}"

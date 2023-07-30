@@ -1,6 +1,6 @@
 name='croc'
 version=VERSION
-release=1
+release=2
 desc='Easily and securely send things from one computer to another'
 homepage='https://github.com/schollz/croc'
 architectures=('amd64')
@@ -25,7 +25,7 @@ package() {
 	echo Creating the package
 	tar -xzf "${name}.tar.gz" -C .
 	# Binary
-	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
+	install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
 	# Autocomplete
 	command -v zsh &> /dev/null && install -Dm644 "./zsh_autocomplete" "${pkgdir}/usr/share/zsh/site-functions/_${name}"
 	command -v bash &> /dev/null && install -Dm644 "./bash_autocomplete" "${pkgdir}/usr/share/bash-completion/completions/${name}"

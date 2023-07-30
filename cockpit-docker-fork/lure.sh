@@ -16,7 +16,7 @@ sources=()
 checksums=()
 
 version() {
-    printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
+	printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
 }
 
 package() {
@@ -30,4 +30,3 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/cockpit"
 	mv docker "${pkgdir}/usr/share/cockpit/"
 }
- 

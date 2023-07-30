@@ -1,6 +1,6 @@
 name='lf'
 version=VERSION
-release=1
+release=2
 desc='A terminal file manager written in Go'
 homepage='https://github.com/gokcehan/lf'
 architectures=('all')
@@ -29,9 +29,9 @@ package() {
 	echo "Creating the package"
 	tar -xzf "${name}.tar.gz" -C .
 	# Binary
-	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
+	install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
 	# Manpage
-	install -Dm644 "./${name}.1" "${pkgdir}/usr/local/share/man/man1/${name}.1"
+	install -Dm644 "./${name}.1" "${pkgdir}/usr/share/man/man1/${name}.1"
 	# Autocomplete
 	command -v fish &> /dev/null && install -Dm644 "./${name}.fish" "${pkgdir}/usr/share/fish/completions/${name}.fish"
 	command -v zsh &> /dev/null && install -Dm644 "./${name}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${name}"

@@ -1,6 +1,6 @@
 name='sejda-console'
 version=3.2.85
-release=2
+release=3
 desc='Shell interface for performing pdf manipulations'
 homepage='https://www.sejda.org'
 architectures=('all')
@@ -22,7 +22,7 @@ package() {
 	mkdir -p ${pkgdir}/opt
 	cp -r ${name}-${version} ${pkgdir}/opt/sejda-console/
 	rm ${pkgdir}/opt/${name}/bin/${name}.bat
-	mkdir -p ${pkgdir}/usr/local/bin
-	ln -s /opt/${name}/bin/${name}  ${pkgdir}/usr/local/bin/
+	mkdir -p ${pkgdir}/usr/bin
+	ln -s /opt/${name}/bin/${name}  ${pkgdir}/usr/bin/
 }
  

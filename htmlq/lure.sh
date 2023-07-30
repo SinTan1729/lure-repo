@@ -1,6 +1,6 @@
 name='htmlq'
 version=VERSION
-release=1
+release=2
 desc='Like jq, but for HTML.'
 homepage='https://github.com/mgdm/htmlq'
 architectures=('amd64')
@@ -25,5 +25,5 @@ package() {
     echo "Creating the package"
     tar -xzf "${name}.tar.gz" -C .
     # Binaries
-    install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
+    install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
 }

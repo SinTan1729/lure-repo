@@ -1,6 +1,6 @@
 name='lsd'
 version=VERSION
-release=1
+release=2
 desc='The next gen ls command'
 homepage='https://github.com/Peltoche/lsd'
 architectures=('amd64')
@@ -26,9 +26,9 @@ package() {
 	tar -xzf "${name}.tar.gz" -C .
 	cd "./${name}-${version}-x86_64-unknown-linux-musl"
 	# Binary
-	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
+	install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
 	# Manpage
-	install -Dm644 "./${name}.1" "${pkgdir}/usr/local/share/man/man1/${name}.1"
+	install -Dm644 "./${name}.1" "${pkgdir}/usr/share/man/man1/${name}.1"
 	# Autocomplete
 	command -v fish &> /dev/null && install -Dm644 "./autocomplete/${name}.fish" "${pkgdir}/usr/share/fish/completions/${name}.fish"
 	command -v zsh &> /dev/null && install -Dm644 "./autocomplete/_${name}" "${pkgdir}/usr/share/zsh/site-functions/_${name}"

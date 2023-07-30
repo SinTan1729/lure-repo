@@ -1,6 +1,6 @@
 name='gocryptfs'
 version=VERSION
-release=1
+release=2
 desc='Encrypted overlay filesystem written in Go'
 homepage='https://github.com/rfjakob/gocryptfs'
 architectures=('amd64')
@@ -25,10 +25,10 @@ package() {
 	echo "Creating the package"
 	tar -xzf "${name}.tar.gz" -C .
 	# Binaries
-	install -Dm755 "./${name}" "${pkgdir}/usr/local/bin/${name}"
-	install -Dm755 "./${name}-xray" "${pkgdir}/usr/local/bin/${name}-xray"
+	install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
+	install -Dm755 "./${name}-xray" "${pkgdir}/usr/bin/${name}-xray"
 	# Manpages
-	install -Dm644 "./${name}.1" "${pkgdir}/usr/local/share/man/man1/${name}.1"
-	install -Dm644 "./${name}-xray.1" "${pkgdir}/usr/local/share/man/man1/${name}-xray.1"
+	install -Dm644 "./${name}.1" "${pkgdir}/usr/share/man/man1/${name}.1"
+	install -Dm644 "./${name}-xray.1" "${pkgdir}/usr/share/man/man1/${name}-xray.1"
 }
  

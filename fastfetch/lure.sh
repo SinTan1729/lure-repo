@@ -24,7 +24,6 @@ package() {
 	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}-${version}-Linux.rpm" -o ${name}.rpm
 	# Build package
 	echo Creating the package
-	ls
 	cd ${pkgdir}
-	rpm2cpio ${name}.rpm | zstd -d | cpio -idmv
+	rpm2cpio ${srcdir}/${name}.rpm | zstd -d | cpio -idmv
 }

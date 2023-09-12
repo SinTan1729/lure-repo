@@ -30,7 +30,7 @@ package() {
 	# Manpage
 	install-manual "./${name}.1"
 	# Autocomplete
-	install-completion fish <"./autocomplete/${name}.fish"
-	install-completion zsh "./autocomplete/${name}.zsh"
-	install-completion bash "./autocomplete/${name}.bash"
+	install-completion fish ${name} <"./autocomplete/${name}.fish"
+	install-completion zsh ${name} <"./autocomplete/${name}.zsh"
+	install-completion bash ${name} <"./autocomplete/${name}.bash"
 }

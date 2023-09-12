@@ -1,6 +1,6 @@
 name='fastfetch'
 version=VERSION
-release=2
+release=3
 desc='Like neofetch, but much faster because written in C.'
 homepage='https://github.com/fastfetch-cli/fastfetch'
 architectures=('amd64')
@@ -26,5 +26,5 @@ package() {
 	echo Creating the package
 	ls
 	cd ${pkgdir}
-	rpm2cpio ../${name}.rpm | zstd -d | cpio -idmv
+	rpm2cpio ${name}.rpm | zstd -d | cpio -idmv
 }

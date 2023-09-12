@@ -14,7 +14,7 @@ sources=()
 checksums=()
 
 version() {
-    printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
+	printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
 }
 
 package() {
@@ -26,12 +26,11 @@ package() {
 	tar -xzf "${name}.tar.gz" -C .
 	cd "./${name}-${version}-x86_64-unknown-linux-musl"
 	# Binary
-	install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
+	install-binary "./${name}"
 	# Manpage
-	install -Dm644 "./${name}.1" "${pkgdir}/usr/share/man/man1/${name}.1"
+	install-manual "./${name}.1"
 	# Autocomplete
-	command -v fish &> /dev/null && install -Dm644 "./autocomplete/${name}.fish" "${pkgdir}/usr/share/fish/completions/${name}.fish"
-	command -v zsh &> /dev/null && install -Dm644 "./autocomplete/${name}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${name}"
-	command -v bash &> /dev/null && install -Dm644 "./autocomplete/${name}.bash" "${pkgdir}/usr/share/bash-completion/completions/${name}"
+	install-completion fish <"./autocomplete/${name}.fish"
+	install-completion zsh "./autocomplete/${name}.zsh"
+	install-completion bash "./autocomplete/${name}.bash"
 }
- 

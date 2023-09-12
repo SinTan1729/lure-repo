@@ -8,7 +8,7 @@ maintainer='SinTan1729'
 license=('APACHE-2.0' 'MIT')
 provides=('fastfetch', 'flashfetch')
 conflicts=('fastfetch', 'flashfetch')
-dependencies=('rpm2cpio', 'zstd')
+dependencies=('rpm2cpio')
 git_repo='fastfetch-cli/fastfetch'
 
 sources=()
@@ -25,5 +25,5 @@ package() {
 	# Build package
 	echo Creating the package
 	cd ${pkgdir}
-	rpm2cpio ${srcdir}/${name}.rpm | zstd -d | cpio -idmv
+	rpm2cpio ${srcdir}/${name}.rpm | cpio -idmv
 }

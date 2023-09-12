@@ -22,10 +22,10 @@ package() {
 	install-manual "./${name}.8"
 	# completions
 	if [ $(echo $(fish --version | awk '{print $3}')$'\n'3.4.0 | sort -V | head -n1) != '3.4.0' ]; then
-		install-completion fish "${name}" | "${name}" --gen-completion fish
+		"${name}" --gen-completion fish | install-completion fish "${name}"
 	fi
-	install-completion zsh "${name}" | "${name}" --gen-completion zsh
-	install-completion bash "${name}" | "${name}" --gen-completion bash
+	"${name}" --gen-completion zsh | install-completion zsh "${name}"
+	"${name}" --gen-completion bash | install-completion bash "${name}"
 
 	echo "Please add 'no_self_update = true' to your 'topgrade.toml' file to disable self updates, as it won't work with this installation"
 }

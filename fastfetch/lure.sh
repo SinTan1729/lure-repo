@@ -1,6 +1,6 @@
 name='fastfetch'
 version=VERSION
-release=1
+release=2
 desc='Like neofetch, but much faster because written in C.'
 homepage='https://github.com/fastfetch-cli/fastfetch'
 architectures=('amd64')
@@ -8,6 +8,7 @@ maintainer='SinTan1729'
 license=('APACHE-2.0' 'MIT')
 provides=('fastfetch', 'flashfetch')
 conflicts=('fastfetch', 'flashfetch')
+dependencies=('rpm2cpio', 'zstd')
 git_repo='fastfetch-cli/fastfetch'
 
 sources=()
@@ -23,6 +24,7 @@ package() {
 	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}-${version}-Linux.rpm" -o ${name}.rpm
 	# Build package
 	echo Creating the package
+	ls
 	cd ${pkgdir}
 	rpm2cpio ../${name}.rpm | zstd -d | cpio -idmv
 }

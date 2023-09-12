@@ -14,7 +14,7 @@ sources=()
 checksums=()
 
 version() {
-    printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
+	printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
 }
 
 package() {
@@ -25,9 +25,8 @@ package() {
 	echo Creating the package
 	tar -xzf "${name}.tar.gz" -C .
 	# Binary
-	install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
+	install-binary "./${name}"
 	# Autocomplete
-	command -v zsh &> /dev/null && install -Dm644 "./zsh_autocomplete" "${pkgdir}/usr/share/zsh/site-functions/_${name}"
-	command -v bash &> /dev/null && install -Dm644 "./bash_autocomplete" "${pkgdir}/usr/share/bash-completion/completions/${name}"
+	install-completion zsh "${name}" <"./zsh_autocomplete"
+	install-completion bash "${name}" <"./bash_autocomplete"
 }
- 

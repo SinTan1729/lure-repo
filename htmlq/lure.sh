@@ -24,6 +24,6 @@ package() {
     # Build package
     echo "Creating the package"
     tar -xzf "${name}.tar.gz" -C .
-    # Binaries
-    install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
+    # Binary
+    install-binary "./${name}"
 }

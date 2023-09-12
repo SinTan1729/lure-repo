@@ -14,7 +14,7 @@ sources=()
 checksums=()
 
 version() {
-    printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
+	printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
 }
 
 package() {
@@ -25,10 +25,9 @@ package() {
 	echo "Creating the package"
 	tar -xzf "${name}.tar.gz" -C .
 	# Binaries
-	install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
-	install -Dm755 "./${name}-xray" "${pkgdir}/usr/bin/${name}-xray"
+	install-binary "./${name}"
+	install-binary "./${name}-xray"
 	# Manpages
-	install -Dm644 "./${name}.1" "${pkgdir}/usr/share/man/man1/${name}.1"
-	install -Dm644 "./${name}-xray.1" "${pkgdir}/usr/share/man/man1/${name}-xray.1"
+	install-manual "./${name}.1"
+	install-manual "./${name}-xray.1"
 }
- 

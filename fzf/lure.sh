@@ -33,14 +33,14 @@ package() {
 	echo "Creating the package"
 	tar -xzf "${name}.tar.gz" -C .
 	# Binaries
-	install -Dm755 "./${name}" "${pkgdir}/usr/bin/${name}"
-	install -Dm755 "./${name}-tmux" "${pkgdir}/usr/bin/${name}-tmux"
+	install-binary "./${name}"
+	install-binary "./${name}-tmux"
 	# Manpages
-	install -Dm644 "./${name}.1" "${pkgdir}/usr/share/man/man1/${name}.1"
-	install -Dm644 "./${name}-tmux.1" "${pkgdir}/usr/share/man/man1/${name}-tmux.1"
+	install-manual "./${name}.1"
+	install-manual "./${name}-tmux.1"
 	# Autocomplete
-	command -v zsh &>/dev/null && install -Dm644 "./${name}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${name}"
-	command -v bash &>/dev/null && install -Dm644 "./${name}.bash" "${pkgdir}/usr/share/bash-completion/completions/${name}"
+	install-completion zsh "${name}" <"./${name}.zsh"
+	install-completion bash "${name}" <"./${name}.bash"
 	# Key-bindings
 	command -v fish &>/dev/null && install -Dm644 key-bindings.fish "${pkgdir}/usr/share/fish/vendor_functions.d/${name}_key_bindings.fish"
 	command -v bash &>/dev/null && install -Dm644 key-bindings.bash "${pkgdir}/usr/share/${name}/key-bindings.bash"

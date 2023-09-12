@@ -11,7 +11,7 @@ sources_amd64=("${homepage}/releases/download/${version}/${name}.tar.gz")
 checksums_amd64=('6f93c6e442afe6a64e8cf6c641e1a20174f6aebd9a557f39ae13d1c41e4a6f6a')
 package() {
 	# Binary
-	install -Dm755 ./${name} "${pkgdir}/usr/bin/${name}"
+	install-binary "./${name}"
 	# Manpage
-	install -Dm644 ./${name}.1 "${pkgdir}/usr/share/man/man1/${name}.1"
+	install-manual "./${name}.1"
 }

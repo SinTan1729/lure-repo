@@ -27,6 +27,8 @@ package() {
 	# Binary
 	install-binary "./${name}"
 	# Autocomplete
+	curl -L "https://raw.githubusercontent.com/$git_repo/main/src/install/bash_autocomplete" -o "bash_autocomplete"
+	curl -L "https://raw.githubusercontent.com/$git_repo/main/src/install/zsh_autocomplete" -o "zsh_autocomplete"
 	install-completion zsh "${name}" <"./zsh_autocomplete"
 	install-completion bash "${name}" <"./bash_autocomplete"
 }

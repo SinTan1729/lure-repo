@@ -21,7 +21,7 @@ version() {
 package() {
 	# Pull sources
 	echo Pulling ${name} ${version}
-	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}-linux-x86_64.rpm" -o ${name}.rpm
+	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}-linux-amd64.rpm" -o ${name}.rpm
 	# Build package
 	echo Creating the package
 	cd ${pkgdir}

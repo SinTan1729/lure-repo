@@ -15,7 +15,7 @@ package() {
 	# Manpage
 	install-manual "./${name}.1"
 	# Completions
-	cat "./${name}.bash" | install-completion bash
-	cat "./${name}.fish" | install-completion fish
-	cat "./$_{name}" | install-completion zsh
+	cat "./${name}.bash" | install-completion bash "${name}"
+	cat "./${name}.fish" | install-completion fish "${name}"
+	cat "./$_{name}" | install-completion zsh "${name}"
 }

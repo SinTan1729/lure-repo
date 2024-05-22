@@ -1,7 +1,7 @@
 name='headscale'
 version=VERSION
 release=1
-desc=' An open source, self-hosted implementation of the Tailscale control server'
+desc='An open source, self-hosted implementation of the Tailscale control server'
 homepage='https://archlinux.org/packages/extra/x86_64/headscale/'
 architectures=('amd64')
 maintainer='SinTan1729'

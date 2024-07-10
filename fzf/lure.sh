@@ -1,6 +1,6 @@
 name='fzf'
 version=VERSION
-release=2
+release=3
 desc='A command-line fuzzy finder'
 homepage='https://github.com/junegunn/fzf'
 architectures=('amd64' 'arm')
@@ -21,9 +21,9 @@ package() {
 	# Pull sources
 	echo "Pulling ${name} ${version}"
 	curl -L "https://github.com/${git_repo}/releases/latest/download/fzf-${version}-linux_amd64.tar.gz" -o ${name}.tar.gz
-	curl -L "https://raw.githubusercontent.com/${git_repo}/master/bin/${name}-tmux" -o ${name}-tmux
+	# curl -L "https://raw.githubusercontent.com/${git_repo}/master/bin/${name}-tmux" -o ${name}-tmux
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/man/man1/${name}.1" -o ${name}.1
-	curl -L "https://raw.githubusercontent.com/${git_repo}/master/man/man1/${name}-tmux.1" -o ${name}-tmux.1
+	# curl -L "https://raw.githubusercontent.com/${git_repo}/master/man/man1/${name}-tmux.1" -o ${name}-tmux.1
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/shell/completion.bash" -o ${name}.bash
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/shell/completion.zsh" -o ${name}.zsh
 	curl -L "https://raw.githubusercontent.com/${git_repo}/master/shell/key-bindings.bash" -o key-bindings.zsh
@@ -34,10 +34,10 @@ package() {
 	tar -xzf "${name}.tar.gz" -C .
 	# Binaries
 	install-binary "./${name}"
-	install-binary "./${name}-tmux"
+	# install-binary "./${name}-tmux"
 	# Manpages
 	install-manual "./${name}.1"
-	install-manual "./${name}-tmux.1"
+# 	# install-manual "./${name}-tmux.1"
 	# Autocomplete
 	install-completion zsh "${name}" <"./${name}.zsh"
 	install-completion bash "${name}" <"./${name}.bash"

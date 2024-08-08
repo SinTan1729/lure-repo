@@ -1,7 +1,7 @@
 name='cockpit-docker-fork'
 _name='cockpit-docker'
 version=VERSION
-release=1
+release=2
 desc='Manage your docker containers from Cockpit'
 homepage='https://github.com/mrevjd/cockpit-docker'
 architectures=('all')
@@ -28,5 +28,6 @@ package() {
 	tar -xf ${name}.tar.gz -C .
 	# Binary
 	mkdir -p "${pkgdir}/usr/share/cockpit"
+    sed -i 's/v1\.12/v1\.24/g' docker/docker.js
 	mv docker "${pkgdir}/usr/share/cockpit/"
 }

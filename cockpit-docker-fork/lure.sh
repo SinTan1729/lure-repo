@@ -28,6 +28,6 @@ package() {
 	tar -xf ${name}.tar.gz -C .
 	# Binary
 	mkdir -p "${pkgdir}/usr/share/cockpit"
-    sed -i 's/v1\.12/v1\.24/g' docker/docker.js
+	sed -i 's/v1\.12/v1\.24/g' docker/docker.js
 	mv docker "${pkgdir}/usr/share/cockpit/"
 }

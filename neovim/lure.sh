@@ -24,5 +24,6 @@ package() {
 	# Build package
 	echo "Creating the package"
 	tar -xzf "${name}.tar.gz" -C .
+    mkdir ${pkgdir}/usr
     cp -r * ${pkgdir}/usr/
 }

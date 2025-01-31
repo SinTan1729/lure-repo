@@ -24,5 +24,5 @@ package() {
 	# Build package
 	echo "Creating the package"
 	tar -xzf "${name}.tar.gz" -C .
-    cp -R nvim-linux64 ${pkgdir}/usr
+    cp -r * ${pkgdir}/usr/
 }

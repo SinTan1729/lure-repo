@@ -25,5 +25,6 @@ package() {
 	echo "Creating the package"
 	tar -xzf "${name}.tar.gz" -C .
     mkdir ${pkgdir}/usr
+    cd ./nvim-linux-x86_64
     cp -r share lib bin ${pkgdir}/usr/
 }

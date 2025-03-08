@@ -8,7 +8,7 @@ homepage='https://github.com/SinTan1729/movie_rename'
 license=('GPL3')
 provides=('movie-rename')
 sources_amd64=("${homepage}/releases/download/${version}/${name}.tar.gz")
-checksums_amd64=('984fc6cb1dcafa828b8290fafdca67ada6e1417d46340988df38d5238498b000')
+checksums_amd64=('d880209bea1b3e22ec29fe2d5b0581e044ffafc944c8fe90666056d53fae6511')
 package() {
 	# Binary
 	install-binary "./${name}"

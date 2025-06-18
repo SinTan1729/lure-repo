@@ -10,7 +10,7 @@ sources_amd64=("${homepage}/releases/download/${version}/chhoto.tar.gz")
 checksums_amd64=('6d1b862cba47abfb52b42af1630f85c783935451d4d78c2df0f1dc43fd257f66')
 package() {
 	# Binary
-	install-binary "./${name}"
+	install-binary "./chhoto"
 	# Manpage
-	install-manual "./${name}.1"
+	install-manual "./chhoto.1"
 }

@@ -2,13 +2,13 @@ name='lsd'
 version=VERSION
 release=2
 desc='The next gen ls command'
-homepage='https://github.com/Peltoche/lsd'
+homepage='https://github.com/lsd-rs/lsd'
 architectures=('amd64')
 maintainer='SinTan1729'
 license=('APACHE-2.0')
 provides=('lsd')
 conflicts=('lsd')
-git_repo='Peltoche/lsd'
+git_repo='lsd-rs/lsd'
 
 sources=()
 checksums=()

@@ -6,7 +6,7 @@ architectures=('amd64')
 homepage="https://github.com/SinTan1729/jellyfin-autorefresh-new-releases"
 license=('GPL3')
 provides=('jellyfin-autorefresh')
-sources_amd64=("${homepage}/releases/download/${version}/jellyfin-autorefresh-new-releases.tar.gz")
+sources_amd64=("${homepage}/releases/download/${version}/jellyfin-autorefresh.tar.gz")
 checksums_amd64=("3ee139b801210f935c49be8d0a73b7ef3301fd2a36201bccfeed3785b7f97744")
 package() {
 	# Binary

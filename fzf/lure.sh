@@ -3,7 +3,7 @@ version=VERSION
 release=3
 desc='A command-line fuzzy finder'
 homepage='https://github.com/junegunn/fzf'
-architectures=('amd64' 'arm')
+architectures=('amd64' 'arm64')
 maintainer='SinTan1729'
 license=('MIT')
 provides=('fzf' 'fzf-tmux')
@@ -37,7 +37,7 @@ package() {
 	# install-binary "./${name}-tmux"
 	# Manpages
 	install-manual "./${name}.1"
-# 	# install-manual "./${name}-tmux.1"
+	# 	# install-manual "./${name}-tmux.1"
 	# Autocomplete
 	install-completion zsh "${name}" <"./${name}.zsh"
 	install-completion bash "${name}" <"./${name}.bash"

@@ -1,6 +1,6 @@
 name="jellyfin-autorefresh-new-releases"
 version=0.2.1
-release=2
+release=1
 desc="Get missing metadata for new releases in Jellyfin"
 architectures=('amd64')
 homepage="https://github.com/SinTan1729/jellyfin-autorefresh-new-releases"

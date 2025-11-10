@@ -12,7 +12,7 @@ sources_amd64=("${homepage}/releases/download/v${version}/${name}-v${version}-x8
 sources_arm64=("${homepage}/releases/download/v${version}/${name}-v${version}-aarch64-unknown-linux-musl.tar.gz")
 sources_armv7=("${homepage}/releases/download/v${version}/${name}-v${version}-armv7-unknown-linux-gnueabihf.tar.gz")
 checksums_amd64=('1d7738c7d38892c92348599e8e4eded2310d25cc52bd97a709ff69933c353411')
-checksums_aarch64=('0f153ad75b419ff5cbb645569f3be33a84ca832ef2c9192e1e45e6eb64722cfe')
+checksums_arm64=('0f153ad75b419ff5cbb645569f3be33a84ca832ef2c9192e1e45e6eb64722cfe')
 checksums_armv7=('20298842cda93e3faeb95b34c04243bbaf6106a49252bed6426a7a31a9429e74')
 package() {
 	# install binary

@@ -1,5 +1,5 @@
 name="topgrade"
-version=16.3.0
+version=16.4.2
 release=1
 desc="Invoke the upgrade procedure of multiple package managers"
 architectures=('amd64' 'arm64' 'armv7')
@@ -11,9 +11,9 @@ conflicts=('topgrade')
 sources_amd64=("${homepage}/releases/download/v${version}/${name}-v${version}-x86_64-unknown-linux-musl.tar.gz")
 sources_arm64=("${homepage}/releases/download/v${version}/${name}-v${version}-aarch64-unknown-linux-musl.tar.gz")
 sources_armv7=("${homepage}/releases/download/v${version}/${name}-v${version}-armv7-unknown-linux-gnueabihf.tar.gz")
-checksums_amd64=('da037327de4c8595cb67982010bb797e0108f61de2970a25799a9e30d0dfcee9')
-checksums_arm64=('aa5f393d8882a983bb509f91477494f1543a079309a7f0444aec9cbfa4065124')
-checksums_armv7=('86e9b968577a8beb5e381ee4009e9604dcf4714342fc3658b8c2efaa5ea190dc')
+checksums_amd64=('85738b50355d3bf876ff9cee7e2a0d817e2c96aaa887fcc8f163cfe36d7cc029')
+checksums_arm64=('081c1c1e90fbcb7a75cc1496a75b39fd4ca0e2744dd7b5d58d1645e24deb32bb')
+checksums_armv7=('a9e239e5083a59fac4d8834c8a9764ba8b6f104143f7bed46546742eb8ec6846')
 package() {
 	# install binary
 	install-binary "./${name}"

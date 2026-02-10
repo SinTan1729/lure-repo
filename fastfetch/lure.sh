@@ -3,12 +3,11 @@ version=VERSION
 release=3
 desc='Like neofetch, but much faster because written in C.'
 homepage='https://github.com/fastfetch-cli/fastfetch'
-architectures=('amd64')
+architectures=('amd64' 'arm64')
 maintainer='SinTan1729'
 license=('APACHE-2.0' 'MIT')
-provides=('fastfetch', 'flashfetch')
-conflicts=('fastfetch', 'flashfetch')
-dependencies=('rpm2cpio')
+provides=('fastfetch')
+conflicts=('fastfetch')
 git_repo='fastfetch-cli/fastfetch'
 
 sources=()
@@ -21,9 +20,11 @@ version() {
 package() {
 	# Pull sources
 	echo Pulling ${name} ${version}
-	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}-linux-amd64.rpm" -o ${name}.rpm
+	[ ${ARCH} == "arm64" ] && ARCH="aarch64"
+	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}-linux-${ARCH}.tar.gz" -o ${name}.tar.gz
 	# Build package
 	echo Creating the package
-	cd ${pkgdir}
-	rpm2cpio ${srcdir}/${name}.rpm | cpio -idmv
+	mkdir tmpdir
+	tar -xvf "${name}.tar.gz" -C tmpdir
+	mv -T tmpdir/fastfetch-linux-${ARCH} ${pkgdir}
 }

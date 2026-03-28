@@ -15,7 +15,7 @@ sources=()
 checksums=()
 
 version() {
-	printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
+	printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name | ltrimstr("v")')"
 }
 
 package() {

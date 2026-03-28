@@ -21,7 +21,7 @@ version() {
 package() {
 	# Pull sources
 	echo Pulling ${name} ${version}
-	[ ${ARCH} == "arm64" ] && ARCH="aarch64"
+	[ ${ARCH} == "amd64" ] && ARCH="x64"
 	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}-linux-${ARCH}.zip" -o ${name}.zip
 	# Build package
 	echo Creating the package

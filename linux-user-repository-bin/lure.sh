@@ -25,6 +25,7 @@ sources_riscv64=("https://github.com/SinTan1729/lure/releases/download/${version
 checksums_riscv64=('f2d2d7f833dceb7c3fc4246bc8f6ee281449d8fec224a124019357e6d5035453')
 
 package() {
+    cp -l $srcdir/lure-${version}-* "$srcdir/lure"
     install-binary ./lure
 
     install-completion bash lure <"$srcdir/scripts/completion/bash"

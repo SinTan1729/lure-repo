@@ -1,6 +1,6 @@
 name='bat'
-version=VERSION
-release=2
+version=0.26.1
+release=1
 desc='A cat(1) clone with syntax highlighting and Git integration'
 homepage='https://github.com/sharkdp/bat'
 architectures=('amd64')
@@ -10,27 +10,17 @@ provides=('bat')
 conflicts=('bat')
 git_repo='sharkdp/bat'
 
-sources=()
-checksums=()
-
-version() {
-	printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
-}
+sources_amd64=("https://github.com/${git_repo}/releases/download/v${version}/bat-v${version}-x86_64-unknown-linux-musl.tar.gz")
+checksums_amd64=('0dcd8ac79732c0d5b136f11f4ee00e581440e16a44eab5b3105b611bbf2cf191')
 
 package() {
-	# Pull sources
-	echo Pulling ${name} ${version}
-	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}-${version}-x86_64-unknown-linux-musl.tar.gz" -o ${name}.tar.gz
-	# Build package
-	echo Creating the package
-	tar -xzf "${name}.tar.gz" -C .
-	cd "./${name}-${version}-x86_64-unknown-linux-musl"
-	# Binary
-	install-binary "./${name}"
-	# Manpage
-	install-manual "./${name}.1"
-	# Autocomplete
-	install-completion fish ${name} <"./autocomplete/${name}.fish"
-	install-completion zsh ${name} <"./autocomplete/${name}.zsh"
-	install-completion bash ${name} <"./autocomplete/${name}.bash"
+    tardir="${srcdir}/bat-v${version}-x86_64-unknown-linux-musl"
+    # Binary
+    install-binary "${tardir}/bat"
+    # Manpage
+    install-manual "${tardir}/bat.1"
+    # Autocomplete
+    install-completion fish bat <"${tardir}/autocomplete/bat.fish"
+    install-completion zsh bat <"${tardir}/autocomplete/bat.zsh"
+    install-completion bash bat <"${tardir}/autocomplete/bat.bash"
 }

@@ -1,5 +1,5 @@
 name='cockpit-sensors'
-version=VERSION
+version=1.1
 release=1
 desc='A cockpit module that displays all data reported by lm-sensors'
 homepage='https://github.com/ocristopfer/cockpit-sensors'
@@ -11,24 +11,13 @@ conflicts=()
 deps=('lm_sensors' 'cockpit')
 git_repo='ocristopfer/cockpit-sensors'
 
-sources=()
-checksums=()
-
-version() {
-    printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
-}
+sources=("https://github.com/${git_repo}/releases/latest/download/${name}.tar.xz")
+checksums=('ab72abca8f279e2dac8da65b0d2d5dc6a5de2e48cb09cbda87e3f536a9de677e')
 
 package() {
-	# Pull sources
-	echo "Pulling ${name} ${version}"
-	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}.tar.xz" -o ${name}.tar.xz
-	# Build package
-	echo "Creating the package"
-	tar -xf ${name}.tar.xz ${name}/dist
-	# Binary
-	mkdir -p "${pkgdir}/usr/share/cockpit"
-	mv ${name}/dist "${pkgdir}/usr/share/cockpit/sensors"
-	# Notice
-	echo "Make sure to run sensors-detect"
+    # Binary
+    mkdir -p "${pkgdir}/usr/share/cockpit"
+    mv "${srcdir}/${name}" "${pkgdir}/usr/share/cockpit/sensors"
+    # Notice
+    echo "Make sure to run sensors-detect"
 }
- 

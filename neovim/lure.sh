@@ -1,5 +1,5 @@
 name='neovim'
-version=VERSION
+version=0.12.3
 release=1
 desc='Fork of Vim aiming to improve user experience, plugins, and GUIs'
 homepage='https://neovim.io'
@@ -10,26 +10,14 @@ license=('Apache-2.0')
 provides=('neovim')
 conflicts=('neovim')
 
-sources=()
-checksums=()
-
-version() {
-	printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name' | cut -c 2-)"
-}
+sources_amd64=("https://github.com/${git_repo}/releases/latest/download/nvim-linux-x86_64.tar.gz")
+checksums_amd64=('c441b547142860bf01bcce39e36cbed185c41112813e15443b16e5237750724d')
+sources_arm64=("https://github.com/${git_repo}/releases/latest/download/nvim-linux-arm64.tar.gz")
+checksums_arm64=('e055af73fa9c72b37456da8d204fa5c09850bc07e80e9176fe3b87d4afb7a3fc')
 
 package() {
-	# Pull sources
-	echo "Pulling ${name} ${version}"
-	if [ "$ARCH" = "amd64" ]; then
-		ARCHNAME="x86_64"
-	else
-		ARCHNAME="arm64"
-	fi
-	curl -L "https://github.com/${git_repo}/releases/latest/download/nvim-linux-${ARCHNAME}.tar.gz" -o ${name}.tar.gz
-	# Build package
-	echo "Creating the package"
-	tar -xzf "${name}.tar.gz" -C .
-	mkdir ${pkgdir}/usr
-	cd ./nvim-linux-${ARCHNAME}
-	cp -r share lib bin ${pkgdir}/usr/
+    mkdir ${pkgdir}/usr
+    [ $ARCH = amd64 ] && ARCH=x86_64
+    cd "${srcdir}/nvim-linux-${ARCH}"
+    cp -r share lib bin ${pkgdir}/usr/
 }

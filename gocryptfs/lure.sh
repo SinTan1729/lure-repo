@@ -1,33 +1,25 @@
 name='gocryptfs'
-version=VERSION
+version=2.6.1
 release=2
 desc='Encrypted overlay filesystem written in Go'
 homepage='https://github.com/rfjakob/gocryptfs'
-architectures=('amd64')
+architectures=('amd64' 'arm64')
 maintainer='SinTan1729'
 license=('MIT')
 provides=('gocryptfs' 'gocryptfs-xray')
 conflicts=('gocryptfs' 'gocryptfs-xray')
 git_repo='rfjakob/gocryptfs'
 
-sources=()
-checksums=()
-
-version() {
-	printf "$(curl -sL "https://api.github.com/repos/${git_repo}/releases/latest" | jq -r '.tag_name')"
-}
+sources_amd64=("https://github.com/${git_repo}/releases/latest/download/${name}_v${version}_linux-static_${ARCH}.tar.gz")
+checksums_amd64=('49b8c0eb0f6373b6ac99c394a52909d8478e74c08d0961527c1162967cc28c44')
+sources_arm64=("https://github.com/${git_repo}/releases/latest/download/${name}_v${version}_linux-static_${ARCH}.tar.gz")
+checksums_arm64=('64576d550ab8af3f1dc729e93779540c5ecc00967d0185aae51a29a3755d86d0')
 
 package() {
-	# Pull sources
-	echo "Pulling ${name} ${version}"
-	curl -L "https://github.com/${git_repo}/releases/latest/download/${name}_${version}_linux-static_${ARCH}.tar.gz" -o ${name}.tar.gz
-	# Build package
-	echo "Creating the package"
-	tar -xzf "${name}.tar.gz" -C .
-	# Binaries
-	install-binary "./${name}"
-	install-binary "./${name}-xray"
-	# Manpages
-	install-manual "./${name}.1"
-	install-manual "./${name}-xray.1"
+    # Binaries
+    install-binary "${srcdir}/${name}"
+    install-binary "${srcdir}/${name}-xray"
+    # Manpages
+    install-manual "${srcdir}/${name}.1"
+    install-manual "${srcdir}/${name}-xray.1"
 }

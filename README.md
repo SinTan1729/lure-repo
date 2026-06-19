@@ -1,4 +1,4 @@
-![Number of packages](https://img.shields.io/badge/number_of_packages-19-blue)
+![Number of packages](https://img.shields.io/badge/number_of_packages-18-blue)
 
 ## LURE Repository
 

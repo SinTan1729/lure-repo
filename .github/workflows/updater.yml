@@ -36,10 +36,10 @@ jobs:
 
             (
               cd "$dir"
-              python3 ../.github/update-lure-checksums.py --upgrade
+              python3 ../.github/update-lure-checksums.py
             ) | tee /tmp/update.log
 
-            grep -- '->' /tmp/update.log >> "$updates_file" || true
+            grep -- '->' </tmp/update.log >> "$updates_file" || true
           done < <(find . -mindepth 1 -maxdepth 1 -type d)
 
       - name: Commit and push changes

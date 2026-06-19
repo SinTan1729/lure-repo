@@ -77,7 +77,7 @@ def read_vars():
                 case "git_repo":
                     git_repo = unquote(val)
                     continue
-            if "_" not in var and var not in ["sources", "checksums"]:
+            if not var.startswith(("sources", "checksums")):
                 continue
 
             try:

@@ -27,13 +27,14 @@ jobs:
 
             [[ "$base" == "orphaned" ]] && continue
             [[ "$base" == ".git" ]] && continue
+            [[ "$base" == ".github" ]] && continue
             [[ "$base" == "sejda-console" ]] && continue
 
-            echo "Processing $dir"
+            echo "Processing $base"
 
             (
               cd "$dir"
-              ../update-lure-checksums.py --upgrade
+              python3 ../.github/update-lure-checksums.py --upgrade
             )
           done < <(find . -mindepth 1 -maxdepth 1 -type d)
 

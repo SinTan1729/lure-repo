@@ -6,11 +6,14 @@ architectures=('amd64')
 homepage="https://github.com/SinTan1729/jellyfin-autorefresh-new-releases"
 license=('GPL3')
 provides=('jellyfin-autorefresh')
-sources_amd64=("${homepage}/releases/download/${version}/jellyfin-autorefresh.tar.gz")
+git_repo='SinTan1729/jellyfin-autorefresh-new-releases'
+
+sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/jellyfin-autorefresh.tar.gz")
 checksums_amd64=('df296f68fce1a4ecf535c454f780ee50f6877b05bcd237d6de88b34245c114ba')
+
 package() {
-	# Binary
-	install-binary "./jellyfin-autorefresh"
-	# Manpage
-	install-manual "./jellyfin-autorefresh.1"
+    # Binary
+    install-binary "./jellyfin-autorefresh"
+    # Manpage
+    install-manual "./jellyfin-autorefresh.1"
 }

@@ -8,6 +8,7 @@ architectures=('amd64' 'arm64' 'riscv64' 'arm' '386')
 license=('GPL-3.0-or-later')
 provides=('linux-user-repository')
 conflicts=('linux-user-repository' 'linux-user-repository-bin' 'linux-user-repository-git')
+git_repo='SinTan1729/lure'
 
 sources_arm64=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-${version}-linux-aarch64.tar.gz")
 checksums_arm64=('3091605ca10acd1b2c82b68015efda3b259ce9b872ca53ebccd383164bde737d')

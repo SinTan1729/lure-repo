@@ -6,11 +6,14 @@ architectures=('amd64')
 homepage='https://github.com/SinTan1729/chhoto-url-cli'
 license=('MIT')
 provides=('chhoto')
-sources_amd64=("${homepage}/releases/download/${version}/chhoto.tar.gz")
+git_repo='SinTan1729/chhoto-url-cli'
+
+sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/chhoto.tar.gz")
 checksums_amd64=('f1c4caab314257eeec65ed07b02c490630abda9b8debbc1d413c8f4b4c79e6d0')
+
 package() {
-	# Binary
-	install-binary "./chhoto"
-	# Manpage
-	install-manual "./chhoto.1"
+    # Binary
+    install-binary "./chhoto"
+    # Manpage
+    install-manual "./chhoto.1"
 }

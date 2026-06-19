@@ -6,11 +6,14 @@ architectures=('amd64')
 homepage="https://github.com/SinTan1729/immich-custom-memories"
 license=('GPL3')
 provides=('immich-custom-memories')
-sources_amd64=("${homepage}/releases/download/${version}/immich-custom-memories.tar.gz")
+git_repo='SinTan1729/immich-custom-memories'
+
+sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/immich-custom-memories.tar.gz")
 checksums_amd64=('56f5e1a5fc4e0aca89aabd9a0296c592ee7318d6374b21ac10325a6b6c13c542')
+
 package() {
-	# Binary
-	install-binary "./immich-custom-memories"
-	# Manpage
-	install-manual "./immich-custom-memories.1"
+    # Binary
+    install-binary "./immich-custom-memories"
+    # Manpage
+    install-manual "./immich-custom-memories.1"
 }

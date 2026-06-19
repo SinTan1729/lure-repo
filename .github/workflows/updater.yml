@@ -23,6 +23,9 @@ jobs:
         run: |
           set -euo pipefail
 
+          updates_file="$RUNNER_TEMP/updates.txt"
+          : > "$updates_file"
+
           while IFS= read -r dir; do
             base=$(basename "$dir")
 
@@ -31,12 +34,12 @@ jobs:
             [[ "$base" == ".github" ]] && continue
             [[ "$base" == "sejda-console" ]] && continue
 
-            echo "Processing $base"
-
             (
               cd "$dir"
               python3 ../.github/update-lure-checksums.py --upgrade
-            )
+            ) | tee /tmp/update.log
+
+            grep -- '->' /tmp/update.log >> "$updates_file" || true
           done < <(find . -mindepth 1 -maxdepth 1 -type d)
 
       - name: Commit and push changes
@@ -51,14 +54,19 @@ jobs:
             exit 0
           fi
 
-          changed_files="$(git diff --cached --name-only)"
+          updates_file="$RUNNER_TEMP/updates.txt"
+
+          {
+            echo "Updates:"
+            if [[ -s "$updates_file" ]]; then
+              sed 's/^/    /' "$updates_file"
+            else
+              echo "    (no update details)"
+            fi
+          } > commit-message.txt
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git commit -m "chore: update LURE checksums
-
-          Changed files:
-          $changed_files"
-
+          git commit -F commit-message.txt
           git push

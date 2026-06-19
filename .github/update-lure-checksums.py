@@ -88,6 +88,10 @@ if len(sys.argv) > 1 and sys.argv[1] == "--upgrade":
     else:
         new_version = None
 
+if new_version is None and not (len(sys.argv) > 2 and sys.argv[2] == "--force"):
+    print("The package is up-to-date.")
+    exit()
+
 for src_type in [k for k in vars.keys() if "sources" in k]:
     try:
         suffix = src_type.split("_")[1]

@@ -1,0 +1,62 @@
+name: Update LURE Checksums
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          while IFS= read -r dir; do
+            base=$(basename "$dir")
+
+            [[ "$base" == "orphaned" ]] && continue
+            [[ "$base" == ".git" ]] && continue
+            [[ "$base" == "sejda-console" ]] && continue
+
+            echo "Processing $dir"
+
+            (
+              cd "$dir"
+              ../update-lure-checksums.py --upgrade
+            )
+          done < <(find . -mindepth 1 -maxdepth 1 -type d)
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+
+          changed_files="$(git diff --cached --name-only)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git commit -m "chore: update LURE checksums
+
+          Changed files:
+          $changed_files"
+
+          git push

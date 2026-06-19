@@ -1,6 +1,6 @@
 name='gocryptfs'
 version=2.6.1
-release=2
+release=1
 desc='Encrypted overlay filesystem written in Go'
 homepage='https://github.com/rfjakob/gocryptfs'
 architectures=('amd64' 'arm64')

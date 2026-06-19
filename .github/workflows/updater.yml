@@ -57,11 +57,11 @@ jobs:
           updates_file="$RUNNER_TEMP/updates.txt"
 
           {
-            echo "Updates:"
+            echo "Packages updated"
             if [[ -s "$updates_file" ]]; then
-              sed 's/^/    /' "$updates_file"
+              "$updates_file"
             else
-              echo "    (no update details)"
+              echo "(no update details)"
             fi
           } > commit-message.txt
 

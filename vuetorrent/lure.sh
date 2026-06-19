@@ -1,6 +1,6 @@
 name='vuetorrent'
 version=2.34.0
-release=4
+release=1
 desc='The sleekest looking WEBUI for qBittorrent made with Vuejs!'
 homepage='https://github.com/WDaan/VueTorrent'
 architectures=('amd64')

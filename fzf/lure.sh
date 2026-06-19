@@ -1,6 +1,6 @@
 name='fzf'
 version=0.73.1
-release=3
+release=1
 desc='A command-line fuzzy finder'
 homepage='https://github.com/junegunn/fzf'
 architectures=('amd64' 'arm64')

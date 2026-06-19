@@ -1,6 +1,6 @@
 name='htmlq'
 version=VERSION
-release=2
+release=1
 desc='Like jq, but for HTML.'
 homepage='https://github.com/mgdm/htmlq'
 architectures=('amd64')

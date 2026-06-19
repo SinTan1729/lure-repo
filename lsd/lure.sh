@@ -1,6 +1,6 @@
 name='lsd'
 version=1.2.0
-release=2
+release=1
 desc='The next gen ls command'
 homepage='https://github.com/lsd-rs/lsd'
 architectures=('amd64' 'arm64')

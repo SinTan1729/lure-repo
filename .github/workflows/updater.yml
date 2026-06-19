@@ -59,7 +59,7 @@ jobs:
           {
             echo "Packages updated"
             if [[ -s "$updates_file" ]]; then
-              "$updates_file"
+              cat "$updates_file"
             else
               echo "(no update details)"
             fi

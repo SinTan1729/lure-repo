@@ -132,6 +132,7 @@ def get_source_checksum(ses: requests.Session, url: str, source: str, version: s
         )
 
     r = ses.get(url, stream=True, timeout=30)
+    r.raise_for_status()
     sha256 = hashlib.sha256()
     for chunk in r.iter_content(chunk_size=8192):
         if chunk:
@@ -177,7 +178,9 @@ def main(args: list[str]):
     if old_version is None:
         raise ValueError("No version found!")
     print(f"Detected version: {old_version}")
-    if len(sources) != len(checksums):
+    if list(map(lambda k: len(sources[k]), sources)) != list(
+        map(lambda k: len(checksums[k]), checksums)
+    ):
         raise IndexError("Sources and checksums are not one-to-one!")
     if not sources:
         print("No sources to update.")

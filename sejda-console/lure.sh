@@ -1,5 +1,6 @@
 name='sejda-console'
 version=3.2.85
+updater_script_skip='true'
 release=1
 desc='Shell interface for performing pdf manipulations'
 homepage='https://www.sejda.org'

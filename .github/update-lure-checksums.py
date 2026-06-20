@@ -12,12 +12,14 @@ import platform
 import requests
 import hashlib
 from collections import Counter
+from urllib.parse import urlparse
 
 # Global variables
 force: bool = False
 name: str | None = None
 old_version: str | None = None
 git_repo: str | None = None
+skip_updates: bool = False
 architectures: list[str] = []
 sources: dict[str, list[str]] = {}
 checksums: dict[str, list[str]] = {}
@@ -63,7 +65,7 @@ def read_args(args):
 
 
 def read_vars():
-    global name, old_version, git_repo, sources, checksums
+    global name, old_version, git_repo, sources, checksums, skip_updates
     with open("lure.sh") as f:
         while line := f.readline():
             line = line.rstrip("\n").strip()
@@ -79,6 +81,8 @@ def read_vars():
                 case "git_repo":
                     git_repo = unquote(val)
                     continue
+                case "updater_script_skip":
+                    skip_updates = unquote(val) == "true"
                 case "architectures":
                     for item in val.strip()[1:-1].split("'"):
                         if item.strip():
@@ -128,8 +132,8 @@ def get_latest_version(ses: requests.Session) -> str:
 
 def get_source_checksum(ses: requests.Session, url: str, source: str, version: str) -> str:
     url = expand_vars(url, source, version)
-    if "github.com" in url and "/releases/download" in url:
-        _, _, _, owner, repo, _, _, tag, filename = url.split("/")
+    if "github.com" in url and "/releases/download/" in url:
+        owner, repo, _, _, tag, filename = urlparse(url).path.strip("/").split("/")
         return next(
             a["digest"].split("sha256:", 1)[1]
             for a in ses.get(
@@ -181,10 +185,13 @@ def main(args: list[str]):
 
     if name is None:
         raise ValueError("No name found!")
-    print(f"Procesing {name}...")
+    print(f"Processing {name}...")
     if old_version is None:
         raise ValueError("No version found!")
     print(f"Detected version: {old_version}")
+    if skip_updates:
+        print("Skipping update due to config.")
+        sys.exit()
     if list(map(lambda k: len(sources[k]), sources)) != list(
         map(lambda k: len(checksums[k]), checksums) or sources.keys() != checksums.keys()
     ):

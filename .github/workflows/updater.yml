@@ -29,10 +29,9 @@ jobs:
           while IFS= read -r dir; do
             base=$(basename "$dir")
 
-            [[ "$base" == "orphaned" ]] && continue
             [[ "$base" == ".git" ]] && continue
             [[ "$base" == ".github" ]] && continue
-            [[ "$base" == "sejda-console" ]] && continue
+            [[ "$base" == "orphaned" ]] && continue
 
             (
               cd "$dir"

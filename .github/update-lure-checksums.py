@@ -11,12 +11,14 @@ import sys
 import platform
 import requests
 import hashlib
+from collections import Counter
 
 # Global variables
 force: bool = False
 name: str | None = None
 old_version: str | None = None
 git_repo: str | None = None
+architectures: list[str] = []
 sources: dict[str, list[str]] = {}
 checksums: dict[str, list[str]] = {}
 sys_arch: str
@@ -77,6 +79,11 @@ def read_vars():
                 case "git_repo":
                     git_repo = unquote(val)
                     continue
+                case "architectures":
+                    for item in val.strip()[1:-1].split("'"):
+                        if item.strip():
+                            architectures.append(item)
+
             if not var.startswith(("sources", "checksums")):
                 continue
 
@@ -179,12 +186,18 @@ def main(args: list[str]):
         raise ValueError("No version found!")
     print(f"Detected version: {old_version}")
     if list(map(lambda k: len(sources[k]), sources)) != list(
-        map(lambda k: len(checksums[k]), checksums)
+        map(lambda k: len(checksums[k]), checksums) or sources.keys() != checksums.keys()
     ):
-        raise IndexError("Sources and checksums are not one-to-one!")
+        raise ValueError("Sources and checksums are not one-to-one!")
     if not sources:
         print("No sources to update.")
         sys.exit()
+    if len(Counter(architectures)) != len(architectures):
+        raise ValueError("Repeated value in architectures!")
+    if Counter(architectures) != Counter(sources.keys()) and not (
+        len(sources) == 1 and len(architectures) == 1 and list(sources)[0] == "any"
+    ):
+        raise ValueError("Sources and architectures are not one-to-one!")
 
     session = requests.session()
     target_version = get_latest_version(session)

@@ -16,7 +16,7 @@ sources_arm64=("https://github.com/${git_repo}/releases/latest/download/${name}-
 checksums_arm64=('f69dc4779dc65f48fa0c2d54d45ad7abbe5fcdf9b979c7104018b965400bcca7')
 
 package() {
-    [ $ARCH = arm64 ] && ARCH=aarch64
+    [ ${ARCH} = arm64 ] && ARCH=aarch64
     # Build package
     mv -T "${srcdir}/fastfetch-linux-${ARCH}" ${pkgdir}
 }

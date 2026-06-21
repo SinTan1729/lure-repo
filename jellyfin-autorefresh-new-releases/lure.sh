@@ -13,7 +13,7 @@ checksums_amd64=('df296f68fce1a4ecf535c454f780ee50f6877b05bcd237d6de88b34245c114
 
 package() {
     # Binary
-    install-binary "./jellyfin-autorefresh"
+    install-binary "${srcdir}/jellyfin-autorefresh"
     # Manpage
-    install-manual "./jellyfin-autorefresh.1"
+    install-manual "${srcdir}/jellyfin-autorefresh.1"
 }

@@ -16,7 +16,9 @@ sources_arm64=("https://github.com/${git_repo}/releases/latest/download/${name}-
 checksums_arm64=('642ecb1a763b9f790a99c83a1445c117a6813ed4edb5d498d4420423c6353eb8')
 
 package() {
-    cd $srcdir/lsd*
+    tmp_arch="$ARCH"
+    [ "$tmp_arch" == "amd64" ] && tmp_arch="x86_64"
+    cd "${srcdir}/lsd-v${version}-${tmp_arch}-unknown-linux-musl"
     # Binary
     install-binary "${name}"
     # Manpage

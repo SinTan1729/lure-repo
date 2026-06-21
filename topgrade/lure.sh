@@ -19,10 +19,10 @@ checksums_armv7=('538493cbb22a5e596d344c94c73474df0d7a01fe8777d721c64b8d106df57b
 
 package() {
     # install binary
-    install-binary "./${name}"
+    install-binary "${srcdir}/${name}"
     # manpage
-    "./${name}" --gen-manpage | sed 's/.TH Topgrade 1/.TH Topgrade 8/' >"${name}.8"
-    install-manual "./${name}.8"
+    "${srcdir}/${name}" --gen-manpage | sed 's/.TH Topgrade 1/.TH Topgrade 8/' >"${name}.8"
+    install-manual "${srcdir}/${name}.8"
     # completions
     if [ $(echo $(fish --version | awk '{print $3}')$'\n'3.4.0 | sort -V | head -n1) != '3.4.0' ]; then
         "${name}" --gen-completion fish | install-completion fish "${name}"

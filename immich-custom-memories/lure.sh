@@ -13,7 +13,7 @@ checksums_amd64=('56f5e1a5fc4e0aca89aabd9a0296c592ee7318d6374b21ac10325a6b6c13c5
 
 package() {
     # Binary
-    install-binary "./immich-custom-memories"
+    install-binary "${srcdir}/immich-custom-memories"
     # Manpage
-    install-manual "./immich-custom-memories.1"
+    install-manual "${srcdir}/immich-custom-memories.1"
 }

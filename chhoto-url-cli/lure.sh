@@ -13,7 +13,7 @@ checksums_amd64=('f1c4caab314257eeec65ed07b02c490630abda9b8debbc1d413c8f4b4c79e6
 
 package() {
     # Binary
-    install-binary "./chhoto"
+    install-binary "${srcdir}/chhoto"
     # Manpage
-    install-manual "./chhoto.1"
+    install-manual "${srcdir}/chhoto.1"
 }

@@ -14,11 +14,11 @@ checksums_amd64=('1cf46ac2fe89d81d28feae67820054953c26b771c3054ce788d606999e1126
 
 package() {
     # Binary
-    install-binary "./${name}"
+    install-binary "${srcdir}/${name}"
     # Manpage
-    install-manual "./${name}.1"
+    install-manual "${srcdir}/${name}.1"
     # Completions
-    cat "./${name}.bash" | install-completion bash "${name}"
-    cat "./${name}.fish" | install-completion fish "${name}"
-    cat "./$_{name}" | install-completion zsh "${name}"
+    install-completion bash "${name}" <"${srcdir}/${name}.bash"
+    install-completion fish "${name}" <"${srcdir}/${name}.fish"
+    install-completion zsh "${name}" <"${srcdir}/_${name}"
 }

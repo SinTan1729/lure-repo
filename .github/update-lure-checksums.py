@@ -38,19 +38,15 @@ def unquote(s: str) -> str:
 def expand_vars(s: str, source: str, version: str) -> str:
     if name is not None:
         s = s.replace("${name}", name)
-        s = s.replace("$name", name)
     if version is not None:
         s = s.replace("${version}", version)
-        s = s.replace("$version", version)
     if git_repo is not None:
         s = s.replace("${git_repo}", git_repo)
-        s = s.replace("$git_repo", git_repo)
     if source == "any" and sys_arch is not None:
         source = sys_arch
     s = s.replace("${ARCH}", source)
-    s = s.replace("$ARCH", source)
 
-    if "$" in s:
+    if "${" in s:
         raise IndexError(f"Unable to expand all vars in: {s}")
     return s
 

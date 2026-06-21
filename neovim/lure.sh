@@ -17,7 +17,7 @@ checksums_arm64=('e055af73fa9c72b37456da8d204fa5c09850bc07e80e9176fe3b87d4afb7a3
 
 package() {
     mkdir ${pkgdir}/usr
-    [ $ARCH = amd64 ] && ARCH=x86_64
+    [ ${ARCH} = amd64 ] && ARCH=x86_64
     cd "${srcdir}/nvim-linux-${ARCH}"
     cp -r share lib bin ${pkgdir}/usr/
 }

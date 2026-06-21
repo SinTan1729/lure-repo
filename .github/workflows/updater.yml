@@ -25,6 +25,7 @@ jobs:
 
           updates_file="$RUNNER_TEMP/updates.txt"
           : > "$updates_file"
+          repo_root=${GITHUB_WORKSPACE}
 
           while IFS= read -r dir; do
             base=$(basename "$dir")
@@ -35,7 +36,7 @@ jobs:
 
             (
               cd "$dir"
-              python3 ../.github/update-lure-checksums.py
+              python3 "${repo_root}/.github/update-lure-checksums.py"
             ) | tee /tmp/update.log
 
             grep -- '->' </tmp/update.log >> "$updates_file" || true

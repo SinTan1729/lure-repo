@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Sayantan Santra <mail@sayantansantra.com>
+# SPDX-License-Identifier: MIT
 
 # This is a script to update checksums for sources in lure build scripts
 # This is a crude analog for updpkgsums for PKGBUILD files
@@ -11,7 +13,6 @@ import sys
 import platform
 import requests
 import hashlib
-from collections import Counter
 from urllib.parse import urlparse
 
 # Global variables
@@ -23,7 +24,7 @@ skip_updates: bool = False
 architectures: list[str] = []
 sources: dict[str, list[str]] = {}
 checksums: dict[str, list[str]] = {}
-sys_arch: str
+sys_arch: str | None = None
 
 
 def unquote(s: str) -> str:
@@ -44,7 +45,7 @@ def expand_vars(s: str, source: str, version: str) -> str:
     if git_repo is not None:
         s = s.replace("${git_repo}", git_repo)
         s = s.replace("$git_repo", git_repo)
-    if source == "any":
+    if source == "any" and sys_arch is not None:
         source = sys_arch
     s = s.replace("${ARCH}", source)
     s = s.replace("$ARCH", source)
@@ -112,7 +113,7 @@ def read_vars():
 
 
 def safe_get(ses: requests.Session, url: str) -> dict:
-    req = ses.get(url)
+    req = ses.get(url, timeout=(3, 10))
     req.raise_for_status()
     return req.json()
 
@@ -132,17 +133,22 @@ def get_latest_version(ses: requests.Session) -> str:
 
 def get_source_checksum(ses: requests.Session, url: str, source: str, version: str) -> str:
     url = expand_vars(url, source, version)
-    if "github.com" in url and "/releases/download/" in url:
-        owner, repo, _, _, tag, filename = urlparse(url).path.strip("/").split("/")
-        return next(
-            a["digest"].split("sha256:", 1)[1]
-            for a in ses.get(
-                f"https://api.github.com/repos/{owner}/{repo}/releases/tags/{tag}"
-            ).json()["assets"]
-            if a["name"] == filename
-        )
+    parsed = urlparse(url)
+    parts = parsed.path.removeprefix("/").split("/")
+    if (
+        parsed.netloc in {"github.com", "www.github.com"}
+        and len(parts) == 6
+        and parts[2:4] == ["releases", "download"]
+    ):
+        owner, repo, _, _, tag, filename = parts
+        res = safe_get(ses, f"https://api.github.com/repos/{owner}/{repo}/releases/tags/{tag}")
+        try:
+            asset: dict = next(filter(lambda f: f["name"] == filename, res["assets"]))
+            return asset["digest"].split("sha256:", 1)[1]
+        except (KeyError, IndexError, StopIteration):
+            print("Unable to find digest through GitHub API. Will try to download...")
 
-    r = ses.get(url, stream=True, timeout=30)
+    r = ses.get(url, stream=True, timeout=(3, 10))
     r.raise_for_status()
     sha256 = hashlib.sha256()
     for chunk in r.iter_content(chunk_size=8192):
@@ -192,16 +198,18 @@ def main(args: list[str]):
     if skip_updates:
         print("Skipping update due to config.")
         sys.exit()
-    if list(map(lambda k: len(sources[k]), sources)) != list(
-        map(lambda k: len(checksums[k]), checksums) or sources.keys() != checksums.keys()
+    if (
+        list(map(lambda k: len(sources[k]), sources))
+        != list(map(lambda k: len(checksums[k]), checksums))
+        or sources.keys() != checksums.keys()
     ):
         raise ValueError("Sources and checksums are not one-to-one!")
     if not sources:
         print("No sources to update.")
         sys.exit()
-    if len(Counter(architectures)) != len(architectures):
+    if len(set(architectures)) != len(architectures):
         raise ValueError("Repeated value in architectures!")
-    if Counter(architectures) != Counter(sources.keys()) and not (
+    if set(architectures) != set(sources.keys()) and not (
         len(sources) == 1 and len(architectures) == 1 and list(sources)[0] == "any"
     ):
         raise ValueError("Sources and architectures are not one-to-one!")
@@ -211,9 +219,11 @@ def main(args: list[str]):
     if old_version == target_version and not force:
         print("Package is up-to-date.")
         sys.exit()
-    elif not force:
+
+    if not force:
         print("Update available.")
         print(f"{name}: {old_version} -> {target_version}")
+    print("Updating checksums for the following architectures:", ", ".join(architectures))
 
     for source in sources.keys():
         for i, item in enumerate(sources[source]):

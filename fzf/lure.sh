@@ -12,39 +12,39 @@ git_repo='junegunn/fzf'
 
 sources_amd64=(
     "https://github.com/${git_repo}/releases/latest/download/fzf-${version}-linux_${ARCH}.tar.gz"
-    "https://raw.githubusercontent.com/${git_repo}/master/man/man1/${name}.1"
-    "https://raw.githubusercontent.com/${git_repo}/master/shell/completion.zsh"
-    "https://raw.githubusercontent.com/${git_repo}/master/shell/completion.bash"
-    "https://raw.githubusercontent.com/${git_repo}/master/shell/key-bindings.bash"
-    "https://raw.githubusercontent.com/${git_repo}/master/shell/key-bindings.zsh"
-    "https://raw.githubusercontent.com/${git_repo}/master/shell/key-bindings.fish"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/man/man1/${name}.1"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/completion.zsh"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/completion.bash"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/key-bindings.bash"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/key-bindings.zsh"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/key-bindings.fish"
 )
 checksums_amd64=(
     'f3252c2c366bc1700d3c85781ec8c9695998927ac127870eb049ceea2d540f8a'
-    '6edcc7a0f292f53fe8880a630a5ec362a95ebf4cf27c4aa33b2aa22d7afc07a7'
+    '78e69a7c384d5222cea8d93df7e91b5c225d51c913c44539beb895e799b38000'
     'ae8cae867f9534557c0d8e1c21b795be2b199cb77487ddcd55ebdb8523a00c4c'
     '263f7c4e602c002747175c69efa507bd3fb663633bb2419efda2e7641ffb6912'
     '89103adb2e29816b0ed8f36814ce4c95945a5f1c7dcd3b0620d2973ea2dbd6ea'
-    '62b85bec366f739913f83e83d108b6100aa27d7cc9aec4d64479ae5dc5b93e76'
-    'cc1f1b7ded58636ef1f748fbdf3b3889a75ebf665b0608d1384e20a7ab6dda50'
+    'a60ce8c33c7a5c91f8b9c1c6c00400b3fa10fd5df2e965d9370e476dfaf3f65c'
+    '739df26921aba9a67c7f174403615e8e436258e4d53ce8aed5598299bffa4893'
 )
 sources_arm64=(
     "https://github.com/${git_repo}/releases/latest/download/fzf-${version}-linux_${ARCH}.tar.gz"
-    "https://raw.githubusercontent.com/${git_repo}/master/man/man1/${name}.1"
-    "https://raw.githubusercontent.com/${git_repo}/master/shell/completion.zsh"
-    "https://raw.githubusercontent.com/${git_repo}/master/shell/completion.bash"
-    "https://raw.githubusercontent.com/${git_repo}/master/shell/key-bindings.bash"
-    "https://raw.githubusercontent.com/${git_repo}/master/shell/key-bindings.zsh"
-    "https://raw.githubusercontent.com/${git_repo}/master/shell/key-bindings.fish"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/man/man1/${name}.1"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/completion.zsh"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/completion.bash"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/key-bindings.bash"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/key-bindings.zsh"
+    "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/key-bindings.fish"
 )
 checksums_arm64=(
     'a408b0b6c08d486307b8f1554f967b8b50ee1b3ea8b4035e3161bab31fdfc28d'
-    '6edcc7a0f292f53fe8880a630a5ec362a95ebf4cf27c4aa33b2aa22d7afc07a7'
+    '78e69a7c384d5222cea8d93df7e91b5c225d51c913c44539beb895e799b38000'
     'ae8cae867f9534557c0d8e1c21b795be2b199cb77487ddcd55ebdb8523a00c4c'
     '263f7c4e602c002747175c69efa507bd3fb663633bb2419efda2e7641ffb6912'
     '89103adb2e29816b0ed8f36814ce4c95945a5f1c7dcd3b0620d2973ea2dbd6ea'
-    '62b85bec366f739913f83e83d108b6100aa27d7cc9aec4d64479ae5dc5b93e76'
-    'cc1f1b7ded58636ef1f748fbdf3b3889a75ebf665b0608d1384e20a7ab6dda50'
+    'a60ce8c33c7a5c91f8b9c1c6c00400b3fa10fd5df2e965d9370e476dfaf3f65c'
+    '739df26921aba9a67c7f174403615e8e436258e4d53ce8aed5598299bffa4893'
 )
 
 package() {

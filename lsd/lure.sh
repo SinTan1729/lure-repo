@@ -28,13 +28,13 @@ package() {
         tmp_arch="$ARCH"
         ;;
     esac
-    cd "${srcdir}/lsd-v${version}-${tmp_arch}-unknown-linux-musl"
+    workdir="${srcdir}/lsd-v${version}-${tmp_arch}-unknown-linux-musl"
     # Binary
-    install-binary "${name}"
+    install-binary "${workdir}/${name}"
     # Manpage
-    install-manual "${name}.1"
+    install-manual "${workdir}/${name}.1"
     # Autocomplete
-    install-completion fish "${name}" <"autocomplete/${name}.fish"
-    install-completion zsh "${name}" <"autocomplete/_${name}"
-    install-completion bash "${name}" <"autocomplete/${name}.bash-completion"
+    install-completion fish "${name}" <"${workdir}/autocomplete/${name}.fish"
+    install-completion zsh "${name}" <"${workdir}/autocomplete/_${name}"
+    install-completion bash "${name}" <"${workdir}/autocomplete/${name}.bash-completion"
 }

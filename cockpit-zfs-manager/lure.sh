@@ -20,6 +20,6 @@ package() {
     cp -r "${srcdir}/cockpit-zfs-manager-${version}/zfs" "${pkgdir}/usr/share/cockpit/"
 
     # Install required fonts
-    tar --no-same-user -xJf ${scriptdir}/fonts.tar.xz
+    tar --no-same-owner -xJf "${scriptdir}/fonts.tar.xz"
     rsync -aA fonts/ ${pkgdir}/
 }

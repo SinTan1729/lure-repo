@@ -17,7 +17,17 @@ checksums_arm64=('642ecb1a763b9f790a99c83a1445c117a6813ed4edb5d498d4420423c6353e
 
 package() {
     tmp_arch="$ARCH"
-    [ "$tmp_arch" == "amd64" ] && tmp_arch="x86_64"
+    case $ARCH in
+    amd64)
+        tmp_arch="x86_64"
+        ;;
+    arm64)
+        tmp_arch="aarch64"
+        ;;
+    *)
+        tmp_arch="$ARCH"
+        ;;
+    esac
     cd "${srcdir}/lsd-v${version}-${tmp_arch}-unknown-linux-musl"
     # Binary
     install-binary "${name}"

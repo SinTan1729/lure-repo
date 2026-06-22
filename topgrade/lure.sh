@@ -30,5 +30,7 @@ package() {
     "${name}" --gen-completion zsh | install-completion zsh "${name}"
     "${name}" --gen-completion bash | install-completion bash "${name}"
 
-    echo "Please add 'no_self_update = true' to your 'topgrade.toml' file to disable self updates, as it won't work with this installation"
+    echo "!!! IMPORTANT !!!"
+    echo "Please add 'no_self_update = true' to your 'topgrade.toml' file to disable self updates."
+    echo "It won't work with this installation."
 }

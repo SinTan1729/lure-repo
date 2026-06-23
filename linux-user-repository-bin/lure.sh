@@ -1,5 +1,5 @@
 name='linux-user-repository-bin'
-version=0.1.7
+version=0.1.8
 release=1
 desc='Linux User REpository'
 homepage='https://lure.sh'
@@ -11,19 +11,19 @@ conflicts=('linux-user-repository' 'linux-user-repository-bin' 'linux-user-repos
 git_repo='SinTan1729/lure'
 
 sources_arm64=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-aarch64.tar.gz")
-checksums_arm64=('a6ef221382be668c00887d6d90be4bf67298a4a8b91b84b801c4851d61beb294')
+checksums_arm64=('8bc0c538b8123bfafc6e33d675a11089f135e3ee8a259e8ef55c2d704dd4ff24')
 
 sources_arm=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-arm.tar.gz")
-checksums_arm=('682c4cbcaee362ba3a274eb21c955cd2410932ad93e1d622ef7dfeab41348964')
+checksums_arm=('300e509e1ac1c24112365bd450e54a3d4287fc01b597cde44bcf61517287c414')
 
 sources_amd64=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-x86_64.tar.gz")
-checksums_amd64=('84aaf352ff68b6f85cce150b5e0a83c30f300a7c0a1588d11c953d68f01e5c50')
+checksums_amd64=('215ef6842a9098059dde49ace961c191d86f22e4d24b09a8aeb91708b3ac2559')
 
 sources_386=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-i386.tar.gz")
-checksums_386=('40b429ad988e5a9f30b3700d94a7f58c97caf475e837bbf4d1dee81c4c24ba24')
+checksums_386=('8e5d72366071be3d8bd6370c4ea32a55e8c73d9629c6da687c0ed54ddd773462')
 
 sources_riscv64=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-riscv64.tar.gz")
-checksums_riscv64=('7fce76405a54656a1bf2e5d8364c6b06c7f2163067940e3b1f4114d838130e94')
+checksums_riscv64=('2e790b42254d9f4fcc6a48f71950eade4003254b8c2240b5c64317f2d4596cdd')
 
 package() {
     case $ARCH in
@@ -44,6 +44,6 @@ package() {
     install-binary ${srcdir}/lure
 
     install-manual "${srcdir}/lure.1"
-    install-completion bash lure <"${srcdir}/scripts/completion/bash"
-    install-completion zsh lure <"${srcdir}/scripts/completion/zsh"
+    install-completion bash lure <"${srcdir}/completion/bash"
+    install-completion zsh lure <"${srcdir}/completion/zsh"
 }

@@ -1,5 +1,5 @@
 name='fastfetch'
-version=2.64.2
+version=2.65.1
 release=1
 desc='Like neofetch, but much faster because written in C.'
 homepage='https://github.com/fastfetch-cli/fastfetch'
@@ -11,9 +11,9 @@ conflicts=('fastfetch' 'flashfetch')
 git_repo='fastfetch-cli/fastfetch'
 
 sources_amd64=("https://github.com/${git_repo}/releases/latest/download/${name}-linux-amd64.tar.gz")
-checksums_amd64=('5dc341ec4853ddeb0c0efa62e033fed57b0a00f7d805ebb6d354241ca244aba5')
+checksums_amd64=('3b6d58e167142067f8231132f428cfe91a94633e33be0a6d867bdcd84e68294d')
 sources_arm64=("https://github.com/${git_repo}/releases/latest/download/${name}-linux-aarch64.tar.gz")
-checksums_arm64=('f69dc4779dc65f48fa0c2d54d45ad7abbe5fcdf9b979c7104018b965400bcca7')
+checksums_arm64=('a00a3461c1e0bf2d4ba430d7d78ca92d4df9a8f6a08466f6669865599f5b963d')
 
 package() {
     [ ${ARCH} = arm64 ] && ARCH=aarch64

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Sayantan Santra <mail@sayantansantra.com>
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: GPL-3.0-only
 
 # This is a script to update checksums for sources in lure build scripts
 # This is a crude analog for updpkgsums for PKGBUILD files

@@ -1,5 +1,5 @@
 name='vuetorrent'
-version=2.34.0
+version=2.34.1
 release=1
 desc='The sleekest looking WEBUI for qBittorrent made with Vuejs!'
 homepage='https://github.com/WDaan/VueTorrent'
@@ -11,7 +11,7 @@ conflicts=('vuetorrent')
 git_repo='WDaan/VueTorrent'
 
 sources_amd64=("https://github.com/${git_repo}/releases/latest/download/${name}.zip")
-checksums_amd64=('22f34c20f6a5704e3b37c3ed73956af7bda5536c10458575c52b0618851b665e')
+checksums_amd64=('6cf0f2c6533835602b1d18cd26e83926d53c9330e0e898e971af6850233d20eb')
 
 package() {
     # Unzip and install

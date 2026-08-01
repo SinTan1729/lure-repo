@@ -1,5 +1,5 @@
 name='fzf'
-version=0.74.1
+version=0.74.2
 release=1
 desc='A command-line fuzzy finder'
 homepage='https://github.com/junegunn/fzf'
@@ -20,13 +20,13 @@ sources_amd64=(
     "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/key-bindings.fish"
 )
 checksums_amd64=(
-    'df53438be5f51e151bb4044d78fda72bdfe209e3ecd2baecae48e8dea370c81b'
-    '52875dc5c7a40cff087248742ae5fde0077293f1d1576c465a0aa566bc9dc895'
+    'b3648f48675612b69ee35371cf6dc99ca96d767e89b912d079080916ac8ba8bd'
+    'bb1541ae0e2a4141cc003d037cd182dda55fcf382a054f729fc2257db04ccef1'
     'ae8cae867f9534557c0d8e1c21b795be2b199cb77487ddcd55ebdb8523a00c4c'
     '263f7c4e602c002747175c69efa507bd3fb663633bb2419efda2e7641ffb6912'
     '89103adb2e29816b0ed8f36814ce4c95945a5f1c7dcd3b0620d2973ea2dbd6ea'
-    '62b85bec366f739913f83e83d108b6100aa27d7cc9aec4d64479ae5dc5b93e76'
-    'cc1f1b7ded58636ef1f748fbdf3b3889a75ebf665b0608d1384e20a7ab6dda50'
+    '88e9e813a62e737ee1dc0bb638c171301bb1bc03edc363346fb7026b94280e50'
+    'ded1ae60705242d85204714ee2268e0cac957a87ad0494afc453933cc4decc78'
 )
 sources_arm64=(
     "https://github.com/${git_repo}/releases/latest/download/fzf-${version}-linux_${ARCH}.tar.gz"
@@ -38,13 +38,13 @@ sources_arm64=(
     "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/key-bindings.fish"
 )
 checksums_arm64=(
-    'f22204dd1a091d43e102268d062fd53b47133c8d8581671ee5eb225b75e31183'
-    '52875dc5c7a40cff087248742ae5fde0077293f1d1576c465a0aa566bc9dc895'
+    '1373e3f5ed3c468179d4529942ddd96c234bcad1bcacaf238916e26a5234b5b2'
+    'bb1541ae0e2a4141cc003d037cd182dda55fcf382a054f729fc2257db04ccef1'
     'ae8cae867f9534557c0d8e1c21b795be2b199cb77487ddcd55ebdb8523a00c4c'
     '263f7c4e602c002747175c69efa507bd3fb663633bb2419efda2e7641ffb6912'
     '89103adb2e29816b0ed8f36814ce4c95945a5f1c7dcd3b0620d2973ea2dbd6ea'
-    '62b85bec366f739913f83e83d108b6100aa27d7cc9aec4d64479ae5dc5b93e76'
-    'cc1f1b7ded58636ef1f748fbdf3b3889a75ebf665b0608d1384e20a7ab6dda50'
+    '88e9e813a62e737ee1dc0bb638c171301bb1bc03edc363346fb7026b94280e50'
+    'ded1ae60705242d85204714ee2268e0cac957a87ad0494afc453933cc4decc78'
 )
 
 package() {

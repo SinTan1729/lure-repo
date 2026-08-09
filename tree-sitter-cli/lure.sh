@@ -1,5 +1,5 @@
 name='tree-sitter-cli'
-version=0.26.11
+version=0.26.12
 release=1
 desc='An incremental parsing system for programming tools'
 homepage='https://github.com/tree-sitter/tree-sitter'
@@ -11,9 +11,9 @@ conflicts=('tree-sitter')
 git_repo='tree-sitter/tree-sitter'
 
 sources_amd64=("https://github.com/${git_repo}/releases/latest/download/${name}-linux-x64.zip")
-checksums_amd64=('ff1b7f9863f2faafd78dc0e66d902ee85b37f709b314b22c009f51caf233eebd')
+checksums_amd64=('c33ace12fa7a94d09c97054da621bf7a6a3159f765b1839a898232de283d641d')
 sources_arm64=("https://github.com/${git_repo}/releases/latest/download/${name}-linux-arm64.zip")
-checksums_arm64=('db28509fe6db8902f9d14c43c486858c7486b42c3a96b30e811e73f105762336')
+checksums_arm64=('be970bfad7b557ffc62b1a7b4c92341a9c6e16d619e9880e43f07c4a4e6eb52a')
 
 package() {
     # Build package

@@ -1,5 +1,5 @@
 name='fzf'
-version=0.74.2
+version=0.74.3
 release=1
 desc='A command-line fuzzy finder'
 homepage='https://github.com/junegunn/fzf'
@@ -20,8 +20,8 @@ sources_amd64=(
     "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/key-bindings.fish"
 )
 checksums_amd64=(
-    'b3648f48675612b69ee35371cf6dc99ca96d767e89b912d079080916ac8ba8bd'
-    'bb1541ae0e2a4141cc003d037cd182dda55fcf382a054f729fc2257db04ccef1'
+    '3501a595e4b5c40a6b047340a0e8f805c46fd4e61ef95ef8a136ba8c61cf6f22'
+    '8d35453a6a2e146107fd7afdb88df970a9cff7388a09be36c9627f81608f2677'
     'ae8cae867f9534557c0d8e1c21b795be2b199cb77487ddcd55ebdb8523a00c4c'
     '263f7c4e602c002747175c69efa507bd3fb663633bb2419efda2e7641ffb6912'
     '89103adb2e29816b0ed8f36814ce4c95945a5f1c7dcd3b0620d2973ea2dbd6ea'
@@ -38,8 +38,8 @@ sources_arm64=(
     "https://raw.githubusercontent.com/${git_repo}/v${version}/shell/key-bindings.fish"
 )
 checksums_arm64=(
-    '1373e3f5ed3c468179d4529942ddd96c234bcad1bcacaf238916e26a5234b5b2'
-    'bb1541ae0e2a4141cc003d037cd182dda55fcf382a054f729fc2257db04ccef1'
+    '4a17a17b46bd0c4873e995533de508995c11572c0be0664a5dbcf13f60463046'
+    '8d35453a6a2e146107fd7afdb88df970a9cff7388a09be36c9627f81608f2677'
     'ae8cae867f9534557c0d8e1c21b795be2b199cb77487ddcd55ebdb8523a00c4c'
     '263f7c4e602c002747175c69efa507bd3fb663633bb2419efda2e7641ffb6912'
     '89103adb2e29816b0ed8f36814ce4c95945a5f1c7dcd3b0620d2973ea2dbd6ea'

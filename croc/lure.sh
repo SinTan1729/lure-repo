@@ -1,5 +1,5 @@
 name='croc'
-version=11.3.4
+version=11.3.5
 release=1
 desc='Easily and securely send things from one computer to another'
 homepage='https://github.com/schollz/croc'
@@ -16,7 +16,7 @@ sources_amd64=(
     "https://raw.githubusercontent.com/${git_repo}/main/src/install/zsh_autocomplete"
 )
 checksums_amd64=(
-    '525223ecf24b4b95eafe8be97e485826a2d95a808eec409076886ef8e4606064'
+    '232335f53e6b55ada99034166f4158c7e05827934030cceb2a194d89e95f97d7'
     '2b0607bb21089e2c8ea8e5ce959875920bcbe20349c2e39a98bc56eba85bed00'
     'af140dc7b4dcff01c57a6eba723bd3dc431dc27663fa0861c4cd37c7335fb1ba'
 )
@@ -26,7 +26,7 @@ sources_arm64=(
     "https://raw.githubusercontent.com/${git_repo}/main/src/install/zsh_autocomplete"
 )
 checksums_arm64=(
-    'cca5fcd50d31b656028efa20bcfda7290dafcf64747b4b0fc2431ad3c8629605'
+    'd19ae628ba8ab54761ebd6bf31ceccf688884999741f95b533e13d7383f32479'
     '2b0607bb21089e2c8ea8e5ce959875920bcbe20349c2e39a98bc56eba85bed00'
     'af140dc7b4dcff01c57a6eba723bd3dc431dc27663fa0861c4cd37c7335fb1ba'
 )

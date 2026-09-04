@@ -7,13 +7,14 @@
 # The script assumed that matching sources* and checksums* lines are already there
 # --force will always update the checksums
 
-import os
-import tempfile
-import sys
-import platform
-import requests
 import hashlib
+import os
+import platform
+import sys
+import tempfile
 from urllib.parse import urlparse
+
+import requests
 
 # Global variables
 force: bool = False
@@ -63,6 +64,7 @@ def read_args(args):
 
 def read_vars():
     global name, old_version, git_repo, sources, checksums, skip_updates
+    sources, checksums = {}, {}
     with open("lure.sh") as f:
         while line := f.readline():
             line = line.rstrip("\n").strip()
@@ -154,30 +156,29 @@ def get_source_checksum(ses: requests.Session, url: str, source: str, version: s
 
 
 def write_file(target_version):
-    with tempfile.NamedTemporaryFile("w", delete=False, dir=".") as out:
-        with open("lure.sh") as f:
-            while line := f.readline():
-                if line.startswith("version="):
-                    out.write(f"version={target_version}\n")
-                elif line.startswith("checksums"):
-                    prefix = line.split("=", 1)[0]
-                    try:
-                        arch = prefix.split("_", 1)[1]
-                        suffix = "_" + arch
-                    except IndexError:
-                        arch = "any"
-                        suffix = ""
-                    if len(checksums[arch]) == 1:
-                        out.write(f"checksums{suffix}=('{checksums[arch][0]}')\n")
-                    else:
-                        out.write(f"checksums{suffix}=(\n")
-                        for checksum in checksums[arch]:
-                            out.write(f"    '{checksum}'\n")
-                        out.write(")\n")
-                        while not line.startswith(")"):
-                            line = f.readline()
+    with tempfile.NamedTemporaryFile("w", delete=False, dir=".") as out, open("lure.sh") as f:
+        while line := f.readline():
+            if line.startswith("version="):
+                out.write(f"version={target_version}\n")
+            elif line.startswith("checksums"):
+                prefix = line.split("=", 1)[0]
+                try:
+                    arch = prefix.split("_", 1)[1]
+                    suffix = "_" + arch
+                except IndexError:
+                    arch = "any"
+                    suffix = ""
+                if len(checksums[arch]) == 1:
+                    out.write(f"checksums{suffix}=('{checksums[arch][0]}')\n")
                 else:
-                    out.write(line)
+                    out.write(f"checksums{suffix}=(\n")
+                    for checksum in checksums[arch]:
+                        out.write(f"    '{checksum}'\n")
+                    out.write(")\n")
+                    while not line.startswith(")"):
+                        line = f.readline()
+            else:
+                out.write(line)
     os.replace(out.name, "lure.sh")
 
 
@@ -194,11 +195,9 @@ def main(args: list[str]):
     if skip_updates:
         print("Skipping update due to config.")
         sys.exit()
-    if (
-        list(map(lambda k: len(sources[k]), sources))
-        != list(map(lambda k: len(checksums[k]), checksums))
-        or sources.keys() != checksums.keys()
-    ):
+    if [len(sources[k]) for k in sources] != [
+        len(checksums[k]) for k in checksums
+    ] or sources.keys() != checksums.keys():
         raise ValueError("Sources and checksums are not one-to-one!")
     if not sources:
         print("No sources to update.")
@@ -206,7 +205,7 @@ def main(args: list[str]):
     if len(set(architectures)) != len(architectures):
         raise ValueError("Repeated value in architectures!")
     if set(architectures) != set(sources.keys()) and not (
-        len(sources) == 1 and len(architectures) == 1 and list(sources)[0] == "any"
+        len(sources) == 1 and len(architectures) == 1 and next(iter(sources)) == "any"
     ):
         raise ValueError("Sources and architectures are not one-to-one!")
 
@@ -221,12 +220,12 @@ def main(args: list[str]):
         print(f"{name}: {old_version} -> {target_version}")
     print("Updating checksums for the following architectures:", ", ".join(architectures))
 
-    for source in sources.keys():
-        for i, item in enumerate(sources[source]):
-            if checksums[source][i] == "SKIP":
+    for key, source in sources.items():
+        for i, item in enumerate(source):
+            if checksums[key][i] == "SKIP":
                 continue
-            checksum = get_source_checksum(session, item, source, target_version)
-            checksums[source][i] = checksum
+            checksum = get_source_checksum(session, item, key, target_version)
+            checksums[key][i] = checksum
 
     write_file(target_version)
     print("Updated package.")

@@ -1,5 +1,5 @@
 name="topgrade"
-version=17.9.0
+version=17.10.1
 release=1
 desc="Invoke the upgrade procedure of multiple package managers"
 architectures=('amd64' 'arm64' 'armv7')
@@ -11,11 +11,11 @@ conflicts=('topgrade')
 git_repo='topgrade-rs/topgrade'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/v${version}/${name}-v${version}-x86_64-unknown-linux-musl.tar.gz")
-checksums_amd64=('21a3e62f6c6e1f150d27e8b8a52530aaf2d87296f3624fa23bafcf6946dff73f')
+checksums_amd64=('8b19ac89061ea3e12d3ec879833f659298f937322eb7c4662ca423866d8a9e9e')
 sources_arm64=("https://github.com/${git_repo}/releases/download/v${version}/${name}-v${version}-aarch64-unknown-linux-musl.tar.gz")
-checksums_arm64=('4d0e0b4acdb80c7ad99b54f6bcaf4df6ca9c8352637bd7f17791f13dd50bb003')
+checksums_arm64=('dd8eba3f884b02f9f425aeb44ba9d083f407140efb8ccf43e2007835373569b9')
 sources_armv7=("https://github.com/${git_repo}/releases/download/v${version}/${name}-v${version}-armv7-unknown-linux-gnueabihf.tar.gz")
-checksums_armv7=('04cc02c2f9252e89092e4d8f0973a093a94c96e96cdcc96d72a241c191f06f6b')
+checksums_armv7=('0fe68325009ceed173facea5d41fe7ca9b6548aa0c95b37def46d645e5809706')
 
 package() {
     # install binary

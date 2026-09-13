@@ -9,7 +9,7 @@ provides=('jellyfin-autorefresh')
 git_repo='SinTan1729/jellyfin-autorefresh-new-releases'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/jellyfin-autorefresh.tar.gz")
-checksums_amd64=('a53dde0a02bef14c666cebe27c1af63ada878e85c1d6fd52ecad3d4c77ac1fbe')
+checksums_amd64=('c9c840bc9e1cee7d19b8930a5f52c33c2276baf7e78e0e2bdd6e2a33b8a3b72d')
 
 package() {
     # Binary

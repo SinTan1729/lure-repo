@@ -1,5 +1,5 @@
 name="jellyfin-autorefresh-new-releases"
-version=0.4.5
+version=0.4.6
 release=1
 desc="Get missing metadata for new releases in Jellyfin"
 architectures=('amd64')
@@ -9,7 +9,7 @@ provides=('jellyfin-autorefresh')
 git_repo='SinTan1729/jellyfin-autorefresh-new-releases'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/jellyfin-autorefresh.tar.gz")
-checksums_amd64=('e1df2b0951dc1978b66c0e0c928541b461a59bf1227e4717ab9cab30e4afdb83')
+checksums_amd64=('56feb0844e572ea714e629d73542e66c6e5a2b403c2a211b36dab882498a84de')
 
 package() {
     # Binary

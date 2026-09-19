@@ -57,7 +57,7 @@ jobs:
           updates_file="$RUNNER_TEMP/updates.txt"
 
           {
-            echo "Packages updated"
+            printf "%s\n\n" "Packages updated"
             if [[ -s "$updates_file" ]]; then
               cat "$updates_file"
             else

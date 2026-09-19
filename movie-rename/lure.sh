@@ -1,6 +1,6 @@
 # Maintainer: Sintan Santorum <c1scu0hh at anonaddy dot me>
 name="movie-rename"
-version=2.4.0
+version=2.4.1
 release=1
 desc="A simple tool to rename movies, written in Rust."
 architectures=('amd64')
@@ -10,7 +10,7 @@ provides=('movie-rename')
 git_repo='SinTan1729/movie-rename'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/${name}.tar.gz")
-checksums_amd64=('7cff9a7b107faa9794817130d1d481449b74b056710d5900504d7372bae221fc')
+checksums_amd64=('5c49e1ce1e8e21a08b9c933001cb3ca5f7827fd829f98796a1ab477de13ebe1e')
 
 package() {
     # Binary

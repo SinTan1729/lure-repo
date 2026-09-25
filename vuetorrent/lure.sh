@@ -17,6 +17,8 @@ package() {
     # Unzip and install
     cp -r "${srcdir}" "${pkgdir}/opt"
     # Print usage instructions
-    echo "Make sure to choose /opt/vuetorrent as the location of the custom WebUI in  qBittorrent settings."
-    echo "You might need to mount this directory first if you're using docker."
+    YELLOW='\033[0;33m'
+    NC='\033[0m'
+    echo -e "${YELLOW}Make sure to choose /opt/vuetorrent as the location of the custom WebUI in  qBittorrent settings."
+    echo -e "You might need to mount this directory first if you're using docker.${NC}"
 }

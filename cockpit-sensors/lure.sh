@@ -19,5 +19,7 @@ package() {
     mkdir -p "${pkgdir}/usr/share/cockpit"
     mv "${srcdir}/${name}" "${pkgdir}/usr/share/cockpit/sensors"
     # Notice
-    echo "Make sure to run sensors-detect"
+    RED='\033[0;31m'
+    NC='\033[0m'
+    echo -e "${RED}Make sure to run sensors-detect.${NC}"
 }

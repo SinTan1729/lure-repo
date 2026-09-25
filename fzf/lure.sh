@@ -62,6 +62,8 @@ package() {
     command -v bash &>/dev/null && install -Dm644 key-bindings.bash "${pkgdir}/usr/share/${name}/key-bindings.bash"
     command -v zsh &>/dev/null && install -Dm644 key-bindings.zsh "${pkgdir}/usr/share/${name}/key-bindings.zsh"
     # Notice
-    echo "For key-binding and completion to work with fish, some manual intervention is required"
-    echo "Look here for instructions: https://wiki.archlinux.org/title/fzf#fish"
+    YELLOW='\033[0;33m'
+    NC='\033[0m'
+    echo -e "${YELLOW}For key-binding and completion to work with fish, some manual intervention is required"
+    echo -e "Look here for instructions: https://wiki.archlinux.org/title/fzf#fish${NC}"
 }

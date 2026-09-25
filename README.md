@@ -2,7 +2,7 @@
 
 ## LURE Repository
 
-This is a repository for my personal [LURE](https://github.com/SinTan1729/lure) (my-fork) build scripts. Of course, anyone else is welcome to use these.
+This is a repository for my personal [LURE](https://github.com/SinTan1729/lure) (my fork) build scripts. Of course, anyone else is welcome to use these.
 
 These are written for RPM and APT-based distros, but should work with most other distros as well.
 

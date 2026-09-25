@@ -11,19 +11,19 @@ conflicts=('linux-user-repository' 'linux-user-repository-bin' 'linux-user-repos
 git_repo='SinTan1729/lure'
 
 sources_arm64=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-${ARCH}.tar.gz")
-checksums_arm64=('202b5fab32c51a18556bf8adbc3bf2a58da55a9367e0cead956895aad1acd553')
+checksums_arm64=('ee3ef8b3ae4caacad8089361abe949363719504bf8bd5a7d2ed7fd6094669abe')
 
 sources_arm=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-${ARCH}.tar.gz")
-checksums_arm=('171f1a4c888b875da580349acd61ac3cbeeda1bae3d13e33f4d9de706186fca9')
+checksums_arm=('91c1b51edac1f9706ec4a904a03588b16099c9ad7e8f19a887fcbeaa722725cc')
 
 sources_amd64=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-${ARCH}.tar.gz")
-checksums_amd64=('902683f9c933bb8549a481631d0cc76a8cf5dff326da28a22a0715beaa8ea576')
+checksums_amd64=('25e3c860ed378898b3368b749d68357598c89798122a28522dcef1779998d3c0')
 
 sources_386=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-${ARCH}.tar.gz")
-checksums_386=('3cc597d08160ae11b2d1a385523c4b2a6a0cd77e50eb925255ff4cb146ef8374')
+checksums_386=('b7a77073471152b35070e30d0e2e0f1dec2e04a5a93dac0c8c1b8b5e48d24da1')
 
 sources_riscv64=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-${ARCH}.tar.gz")
-checksums_riscv64=('9a2e1bd92d83817c00433ed90b7970c887ce4efe385242e290541080eacf644d')
+checksums_riscv64=('bad39e9ba1f939c25e3d044ee75d17a7c64879cc8abb48bd0d153e0055502cef')
 
 package() {
     workdir="${srcdir}/lure-v${version}-linux-${ARCH}"

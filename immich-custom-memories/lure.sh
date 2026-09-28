@@ -6,6 +6,7 @@ architectures=('amd64' 'arm64')
 homepage="https://github.com/SinTan1729/immich-custom-memories"
 license=('GPL3')
 provides=('immich-custom-memories')
+maintainer='SinTan1729'
 git_repo='SinTan1729/immich-custom-memories'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/immich-custom-memories-${version}-amd64-linux.tar.gz")

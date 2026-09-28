@@ -6,6 +6,7 @@ architectures=('amd64')
 homepage='https://github.com/SinTan1729/chhoto-url-cli'
 license=('MIT')
 provides=('chhoto')
+maintainer='SinTan1729'
 git_repo='SinTan1729/chhoto-url-cli'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/chhoto.tar.gz")

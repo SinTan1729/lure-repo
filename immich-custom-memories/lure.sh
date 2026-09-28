@@ -1,5 +1,5 @@
 name="immich-custom-memories"
-version=0.1.3
+version=0.2.0
 release=1
 desc="Get missing metadata for new releases in Jellyfin"
 architectures=('amd64')
@@ -9,7 +9,7 @@ provides=('immich-custom-memories')
 git_repo='SinTan1729/immich-custom-memories'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/immich-custom-memories.tar.gz")
-checksums_amd64=('a8f7ff969c822f88d4a908dec54fa6bda6ede1dbb08eb5eb9269b23ddaaa5afb')
+checksums_amd64=('6c9919e7c55216fe79e90de48768708ad81715bb2f7bcc461d5c9c5432ed75d1')
 
 package() {
     # Binary

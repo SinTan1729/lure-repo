@@ -8,10 +8,10 @@ license=('GPL3')
 provides=('immich-custom-memories')
 git_repo='SinTan1729/immich-custom-memories'
 
-sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/immich-custom-memories-amd64-linux.tar.gz")
-checksums_amd64=('b94d4ac267880cc5501cef4726e3316822c6a3663a99987e58409433d580bf01')
-sources_arm64=("https://github.com/${git_repo}/releases/download/${version}/immich-custom-memories-arm64-linux.tar.gz")
-checksums_arm64=('574c917b0bdfbf7a3480f863509880c97a9c18612c844ffbebe259cd21510dc2')
+sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/immich-custom-memories-${version}-amd64-linux.tar.gz")
+checksums_amd64=('36df2b0871e29e8ce8f19e0c179022587d596b5acb31f09e1ff4ea674d5fb8c2')
+sources_arm64=("https://github.com/${git_repo}/releases/download/${version}/immich-custom-memories-${version}-arm64-linux.tar.gz")
+checksums_arm64=('56a7bb66517932356d9d9209548e966c6cc2314c3adaabcd52dea7b2b17d8ae9')
 
 package() {
     # Binary

@@ -10,9 +10,9 @@ maintainer='SinTan1729'
 git_repo='SinTan1729/jellyfin-autorefresh-new-releases'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/jellyfin-autorefresh-${version}-amd64-linux.tar.gz")
-checksums_amd64=('b00e112e15a816e255f9382a3397e5edb2f410028f9232a7fbf4f9705ff5e42a')
+checksums_amd64=('aa33e5b934a9002d38131cddf813b28c8e708ed7f63bf92d31e7ef999482a4da')
 sources_arm64=("https://github.com/${git_repo}/releases/download/${version}/jellyfin-autorefresh-${version}-arm64-linux.tar.gz")
-checksums_arm64=('431785185d8ada87863f098d68c4800f6f2669a499e970bcba0f81a0e92394c5')
+checksums_arm64=('6261fe6db9f68b25aa656ed8def753ac98e02899652f787428c5ca90c2568cc2')
 
 package() {
     mv ${srcdir}/jellyfin-autorefresh-* "${srcdir}/jellyfin-autorefresh"

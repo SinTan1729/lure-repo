@@ -1,5 +1,5 @@
 name="jellyfin-autorefresh-new-releases"
-version=0.4.19
+version=0.4.20
 release=1
 desc="Get missing metadata for new releases in Jellyfin"
 architectures=('amd64' 'arm64')
@@ -10,9 +10,9 @@ maintainer='SinTan1729'
 git_repo='SinTan1729/jellyfin-autorefresh-new-releases'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/jellyfin-autorefresh-${version}-amd64-linux.tar.gz")
-checksums_amd64=('aa33e5b934a9002d38131cddf813b28c8e708ed7f63bf92d31e7ef999482a4da')
+checksums_amd64=('de3386b72c7c509e8400b95cc7a7f7fc72b0b5d49b305744ac62f8ff742ee615')
 sources_arm64=("https://github.com/${git_repo}/releases/download/${version}/jellyfin-autorefresh-${version}-arm64-linux.tar.gz")
-checksums_arm64=('6261fe6db9f68b25aa656ed8def753ac98e02899652f787428c5ca90c2568cc2')
+checksums_arm64=('4dc611661cc2e7ed6ea8bd1b51262c30ee7dab1de83f6c93523b84db55e8082b')
 
 package() {
     mv ${srcdir}/jellyfin-autorefresh-* "${srcdir}/jellyfin-autorefresh"

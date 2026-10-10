@@ -1,5 +1,5 @@
 name='neovim'
-version=0.12.5
+version=0.12.6
 release=1
 desc='Fork of Vim aiming to improve user experience, plugins, and GUIs'
 homepage='https://neovim.io'
@@ -11,9 +11,9 @@ provides=('neovim')
 conflicts=('neovim')
 
 sources_amd64=("https://github.com/${git_repo}/releases/latest/download/nvim-linux-x86_64.tar.gz")
-checksums_amd64=('bce0f56eda1f1b1db6eee8f4133d7a38813ea07933837dd1777411ca384c6875')
+checksums_amd64=('474430d53e6264f6d6dd18db42d6dc9df3a1b56ca9e88a325bbf860e1a811d87')
 sources_arm64=("https://github.com/${git_repo}/releases/latest/download/nvim-linux-arm64.tar.gz")
-checksums_arm64=('1aa5ca085249580ae0f91eb14f27ec0919773ff2d99a163d03f3d6c21ac29725')
+checksums_arm64=('8f1f64a0bdb97247034038c3823c6cbad5bdf9ecd5751b85494b71c3ee04c815')
 
 package() {
     case $ARCH in

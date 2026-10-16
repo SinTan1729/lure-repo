@@ -1,5 +1,5 @@
 name='fast-cli'
-version=0.3.9
+version=0.3.10
 release=1
 desc='Command line version of fast.com in ~1.2 MB'
 homepage='https://github.com/mikkelam/fast-cli'
@@ -11,9 +11,9 @@ conflicts=('fast-cli')
 git_repo='mikkelam/fast-cli'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/v${version}/fast-cli-x86_64-linux.tar.gz")
-checksums_amd64=('4b5cf42c4f5a143272ef2619045ec54e5532c3700af65b2fe490bcf6b133b75d')
+checksums_amd64=('8b957bcb82f79337350e020a2b15f3b655fab0c71b7bfe23d09e2bd17eae1a77')
 sources_arm64=("https://github.com/${git_repo}/releases/download/v${version}/fast-cli-aarch64-linux.tar.gz")
-checksums_arm64=('b0dac8e5000b4af24ca2789c6a2f9ebe3eb3fcfefde9ea515ebfcc323d99e9c7')
+checksums_arm64=('c45fb1be7986ac30247a43906c95d808614a48bb5489c01e155375ef63a38af0')
 
 package() {
     install-binary "${srcdir}/fast-cli"

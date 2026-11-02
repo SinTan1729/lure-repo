@@ -10,7 +10,7 @@ provides=('movie-rename')
 git_repo='SinTan1729/movie-rename'
 
 sources_amd64=("https://github.com/${git_repo}/releases/download/${version}/${name}.tar.gz")
-checksums_amd64=('4ee8bb3b6c55ee08ece8c1ec97caed5fa209c31ecf36f6958286b52ee63905aa')
+checksums_amd64=('cd2800914077415777ffa6e01012ba6dc94910e076645c2eb42f2b0638207e33')
 
 package() {
     # Binary

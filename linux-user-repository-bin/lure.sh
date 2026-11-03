@@ -4,7 +4,7 @@ release=1
 desc='Linux User REpository'
 homepage='https://lure.sh'
 maintainer='SinTan1729 <mail@sayantansantra.co,a>'
-architectures=('amd64' 'arm64' 'riscv64' 'arm' '386')
+architectures=('amd64' 'arm64' 'riscv64' 'arm' '386' 'arm5' 'arm6')
 license=('GPL-3.0-or-later')
 provides=('linux-user-repository')
 conflicts=('linux-user-repository' 'linux-user-repository-bin' 'linux-user-repository-git')
@@ -15,6 +15,12 @@ checksums_arm64=('5a8f02217f36e3e04b85eaca006d0a88de66d346a25b2a5261410987fe7039
 
 sources_arm=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-armv7.tar.gz")
 checksums_arm=('098abbd39abc4636f85b9070b3b4cdca20ba29fd7e7f95f8e802621288beaaf7')
+
+sources_arm5=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-armv5.tar.gz")
+checksums_arm5=('6bcc05f87090d037bcf114b6cae55a89a0584585aab67a04bc07c7a5fc4ae518')
+
+sources_arm6=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-armv6.tar.gz")
+checksums_arm6=('992a06d2e49d6f99275b20d07d682d49a59df89b850ee041ee4997a089d090a2')
 
 sources_amd64=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-x86_64.tar.gz")
 checksums_amd64=('6d3bf1f80813c8a9543f7e6c719707df47e4c84c32e7d628e2b65408dcfb902e')

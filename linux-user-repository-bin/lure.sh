@@ -11,7 +11,7 @@ conflicts=('linux-user-repository' 'linux-user-repository-bin' 'linux-user-repos
 git_repo='SinTan1729/lure'
 
 sources_arm64=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-arm64.tar.gz")
-checksums_arm64=('5a8f02217f36e3e04b85eaca006d0a88de66d346a25b2a5261410987fe703980')
+checksums_arm64=('90c6312d20bab07c148402ad0dd1163480253b34a7ee01bd28ff2295fdb5f65b')
 
 sources_arm=("https://github.com/SinTan1729/lure/releases/download/${version}/lure-v${version}-linux-armv7.tar.gz")
 checksums_arm=('098abbd39abc4636f85b9070b3b4cdca20ba29fd7e7f95f8e802621288beaaf7')

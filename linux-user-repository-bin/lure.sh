@@ -26,6 +26,11 @@ sources_riscv64=("https://github.com/SinTan1729/lure/releases/download/${version
 checksums_riscv64=('eaf1479f14d988895305016a19db103240184c0497f61f3753e4979dd2a76c0b')
 
 package() {
+    case "$ARCH" in
+    "amd64") ARCH="x86_64" ;;
+    "arm") ARCH="armv7" ;;
+    "386") ARCH="i686" ;;
+    esac
     workdir="${srcdir}/lure-v${version}-linux-${ARCH}"
     install-binary ${workdir}/lure
     install-manual "${workdir}/misc/man/lure.1"

@@ -1,5 +1,5 @@
 name='cockpit-sensors'
-version=2.3.0
+version=2.4.0
 release=1
 desc='A cockpit module that displays all data reported by lm-sensors'
 homepage='https://github.com/ocristopfer/cockpit-sensors'
@@ -12,7 +12,7 @@ deps=('lm_sensors' 'cockpit')
 git_repo='ocristopfer/cockpit-sensors'
 
 sources=("https://github.com/${git_repo}/releases/latest/download/${name}.tar.xz")
-checksums=('0ce8c29b8abd960203d55cf209418920204d669398ffc99c80d4295d4c52019b')
+checksums=('a66b8a97da8f2254c21ea8b941675e81464285fb067ea4ab7747cdb81265502b')
 
 package() {
     # Binary

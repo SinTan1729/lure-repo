@@ -1,5 +1,5 @@
 name='gocryptfs'
-version=2.6.1
+version=2.7.0
 release=1
 desc='Encrypted overlay filesystem written in Go'
 homepage='https://github.com/rfjakob/gocryptfs'
@@ -11,9 +11,9 @@ conflicts=('gocryptfs' 'gocryptfs-xray')
 git_repo='rfjakob/gocryptfs'
 
 sources_amd64=("https://github.com/${git_repo}/releases/latest/download/${name}_v${version}_linux-static_${ARCH}.tar.gz")
-checksums_amd64=('49b8c0eb0f6373b6ac99c394a52909d8478e74c08d0961527c1162967cc28c44')
+checksums_amd64=('3e2e2a5270921e01bfbb46ebc39b614d0146d6961a28de4ba9cc5d43534b8dcf')
 sources_arm64=("https://github.com/${git_repo}/releases/latest/download/${name}_v${version}_linux-static_${ARCH}.tar.gz")
-checksums_arm64=('64576d550ab8af3f1dc729e93779540c5ecc00967d0185aae51a29a3755d86d0')
+checksums_arm64=('0b58b9d1c09a93a8b43543e61b1b690281d39ba054e3b48804c07acdcd465821')
 
 package() {
     # Binaries
